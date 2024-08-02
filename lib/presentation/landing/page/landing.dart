@@ -15,7 +15,7 @@ class LandingPage extends StatelessWidget {
         child: const Column(
           children: [
             Text('Pokedex',
-                style: TextStyle(fontSize: 32, color: AppColors.font, fontFamily: )),
+                style: TextStyle(fontSize: 32, color: AppColors.font))
           ],
         ),
       ),
