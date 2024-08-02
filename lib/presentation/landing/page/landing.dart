@@ -7,16 +7,12 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
       body: Container(
         color: AppColors.alerRed,
         width: double.infinity,
-        height: 200,
+        height: 150,
         child: const Column(
-          children: [
-            Text('Pokedex',
-                style: TextStyle(fontSize: 32, color: AppColors.font))
-          ],
+          children: [Text('Pokedex')],
         ),
       ),
     );

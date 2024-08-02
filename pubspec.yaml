@@ -2,7 +2,7 @@ name: pokedex_demo
 description: "A pokedex with flutter"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.4 <4.0.0'
+  sdk: ">=3.4.4 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -30,7 +30,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -58,11 +57,20 @@ flutter:
     - family: LeagueSpartan
       fonts:
         - asset: assets/fonts/LeagueSpartan-Black.ttf
-        - asset: assets/fonts/LeagueSpartan-Bold.ttf
+          weight: 900
         - asset: assets/fonts/LeagueSpartan-ExtraBold.ttf
-        - asset: assets/fonts/LeagueSpartan-ExtraLight.ttf
-        - asset: assets/fonts/LeagueSpartan-Light.ttf
-        - asset: assets/fonts/LeagueSpartan-Medium.ttf
-        - asset: assets/fonts/LeagueSpartan-Regular.ttf
+          weight: 800
+        - asset: assets/fonts/LeagueSpartan-Bold.ttf
+          weight: 700
         - asset: assets/fonts/LeagueSpartan-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/LeagueSpartan-Regular.ttf
+          weight: 500
+        - asset: assets/fonts/LeagueSpartan-Medium.ttf
+          weight: 400
         - asset: assets/fonts/LeagueSpartan-Thin.ttf
+          weight: 300
+        - asset: assets/fonts/LeagueSpartan-Light.ttf
+          weight: 200
+        - asset: assets/fonts/LeagueSpartan-ExtraLight.ttf
+          weight: 100

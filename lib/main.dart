@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_demo/presentation/page/landing/landing.dart';
+import 'package:pokedex_demo/core/configs/themes/app_themes.dart';
+import 'package:pokedex_demo/presentation/landing/page/landing.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,10 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'pokedex',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppThemes.lightTheme,
       home: const LandingPage(),
     );
   }
