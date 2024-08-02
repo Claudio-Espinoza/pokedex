@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
@@ -7,12 +6,34 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: AppColors.alerRed,
+      body: SizedBox(
         width: double.infinity,
-        height: 150,
-        child: const Column(
-          children: [Text('Pokedex')],
+        height: double.maxFinite,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Flexible(
+              flex: 1,
+              child: Container(
+                color: Colors.red,
+                child: const Center(child: Text('Pokedex')),
+              ),
+            ),
+            Flexible(
+              flex: 3,
+              child: Container(
+                color: Colors.green,
+                child: const Center(child: Text('Component 2')),
+              ),
+            ),
+            Flexible(
+              flex: 2,
+              child: Container(
+                color: Colors.blue,
+                child: const Center(child: Text('Component 3')),
+              ),
+            ),
+          ],
         ),
       ),
     );
