@@ -6,6 +6,7 @@ class AppColors {
   static const font = Color(0xff222222);
   static const disableFont = Color(0xff757575);
   static const input = Color(0xffEAE8F2);
+  static const border = Color(0XffE1E1E1);
   static const iconGray = Color(0xff717171);
   static const icon = Color(0xff222222);
   static const alertGreen = Color(0xff80FF79);

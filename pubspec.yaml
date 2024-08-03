@@ -51,7 +51,8 @@ flutter:
 
   assets:
     - assets/fonts/
-    - assets/icon/
+    - assets/icon/system/search.png
+    - assets/icon/system/
 
   fonts:
     - family: LeagueSpartan
