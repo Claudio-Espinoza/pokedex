@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
+import 'package:pokedex_demo/core/configs/themes/app_layer.dart';
 
 class AppThemes {
   static final lightTheme = ThemeData(
@@ -14,11 +15,11 @@ class AppThemes {
     filled: true,
     fillColor: AppColors.input,
     enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10.0),
+      borderRadius: BorderRadius.circular(AppLayer.borderRadius),
       borderSide: const BorderSide(color: AppColors.border),
     ),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10.0),
+      borderRadius: BorderRadius.circular(AppLayer.borderRadius),
       borderSide: const BorderSide(color: AppColors.iconGray),
     ),
   );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex_demo/presentation/landing/widget/header_landing.dart';
+import 'package:pokedex_demo/presentation/landing/widget/presentation_article.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
@@ -17,12 +18,9 @@ class LandingPage extends StatelessWidget {
               flex: 1,
               child: HeaderLanding(),
             ),
-            Flexible(
+            const Flexible(
               flex: 3,
-              child: Container(
-                color: Colors.green,
-                child: const Center(child: Text('Component 2')),
-              ),
+              child: PresentationArticle(),
             ),
             Flexible(
               flex: 2,
