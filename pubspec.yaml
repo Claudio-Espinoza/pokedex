@@ -50,9 +50,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/fonts/
-    - assets/icon/system/search.png
-    - assets/icon/system/
+    - assets/icon/
+    - assets/icon/elements/
 
   fonts:
     - family: LeagueSpartan
