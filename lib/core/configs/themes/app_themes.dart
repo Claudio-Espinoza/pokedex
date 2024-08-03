@@ -7,4 +7,19 @@ class AppThemes {
       brightness: Brightness.light,
       fontFamily: 'LeagueSpartan',
       primaryColor: AppColors.red);
+
+  static final inputTheme = InputDecoration(
+    hintText: 'Buscar Pokémon',
+    suffixIcon: const Icon(Icons.search),
+    filled: true,
+    fillColor: AppColors.input,
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10.0),
+      borderSide: const BorderSide(color: AppColors.border),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10.0),
+      borderSide: const BorderSide(color: AppColors.iconGray),
+    ),
+  );
 }
