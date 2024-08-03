@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_demo/core/configs/themes/app_layer.dart';
+import 'package:pokedex_demo/presentation/landing/widget/header_landing.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});
@@ -15,32 +15,7 @@ class LandingPage extends StatelessWidget {
           children: [
             const Flexible(
               flex: 1,
-              child: Center(
-                  child: Padding(
-                padding: EdgeInsets.only(
-                  top: AppLayer.marginVertical,
-                  left: AppLayer.marginHorizontal,
-                  right: AppLayer.marginHorizontal,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Pokedex',
-                      style:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(height: 10),
-                    TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Enter something',
-                      ),
-                    ),
-                  ],
-                ),
-              )),
+              child: HeaderLanding(),
             ),
             Flexible(
               flex: 3,
