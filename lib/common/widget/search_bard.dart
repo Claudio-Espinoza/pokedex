@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
+import 'package:pokedex_demo/core/configs/themes/app_themes.dart';
 
 class SearchInput extends StatelessWidget {
   final TextEditingController controller;
@@ -14,12 +16,10 @@ class SearchInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
-      decoration: InputDecoration(
-        border: const OutlineInputBorder(),
-        labelText: labelText,
-      ),
+      style: const TextStyle(color: AppColors.font),
+      decoration: AppThemes.inputTheme,
       onSubmitted: (text) {
-        print('Input: $text');
+        print('Input: $text'); // Aqui tendriamos agregarle la logica de buscar
       },
     );
   }
