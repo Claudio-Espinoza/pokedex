@@ -12,7 +12,7 @@ class HeaderLanding extends StatelessWidget {
     return Center(
       child: Padding(
         padding: const EdgeInsets.only(
-          top: AppLayer.marginVertical,
+          top: AppLayer.marginVertical - 10,
           left: AppLayer.marginHorizontal,
           right: AppLayer.marginHorizontal,
         ),

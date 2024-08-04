@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex_demo/common/widget/custom_buton.dart';
+import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
+import 'package:pokedex_demo/core/configs/themes/app_layer.dart';
 import 'package:pokedex_demo/presentation/pokedex/page/pokedex.dart';
 import 'package:pokedex_demo/presentation/team/page/team.dart';
 
@@ -17,19 +20,27 @@ class _OptionLandingState extends State<OptionLanding> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.only(
+            bottom: AppLayer.marginVertical + 30,
+            left: AppLayer.marginHorizontal,
+            right: AppLayer.marginHorizontal),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ElevatedButton(
+            CustomButton(
+              text: 'Ir a la primera pagina',
               onPressed: () => redirectToPage(const Team()),
-              child: const Text('Ir a Primera Página'),
+              backgroundColor: AppColors.green, // Personaliza el color de fondo
+              textColor: Colors.white,
             ),
-            ElevatedButton(
+            CustomButton(
+              text: 'Ir a la segunda pagina',
               onPressed: () => redirectToPage(const Pokedex()),
-              child: const Text('Ir a Segunda Página'),
-            ),
+              backgroundColor: AppColors.blue, // Personaliza el color de fondo
+              textColor: Colors.white,
+            )
           ],
         ),
       ),

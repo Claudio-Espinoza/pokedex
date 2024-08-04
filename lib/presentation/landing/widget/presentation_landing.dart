@@ -10,10 +10,10 @@ class PresentationArticle extends StatelessWidget {
     return Center(
       child: Padding(
         padding: const EdgeInsets.only(
-            top: AppLayer.marginVertical,
+            top: AppLayer.marginVertical - 10,
             left: AppLayer.marginHorizontal,
             right: AppLayer.marginHorizontal,
-            bottom: AppLayer.marginVertical),
+            bottom: AppLayer.marginVertical + 10),
         child: Container(
           width: double.infinity,
           height: double.maxFinite,

@@ -16,15 +16,15 @@ class LandingPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Flexible(
-              flex: 1,
+              flex: 2,
               child: HeaderLanding(),
             ),
             Flexible(
-              flex: 3,
+              flex: 5,
               child: PresentationArticle(),
             ),
             Flexible(
-              flex: 2,
+              flex: 3,
               child: OptionLanding(),
             ),
           ],
