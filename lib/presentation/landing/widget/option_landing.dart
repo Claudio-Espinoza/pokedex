@@ -32,14 +32,12 @@ class _OptionLandingState extends State<OptionLanding> {
             CustomButton(
               text: 'Ir a la primera pagina',
               onPressed: () => redirectToPage(const Team()),
-              backgroundColor: AppColors.green, // Personaliza el color de fondo
-              textColor: Colors.white,
+              backgroundColor: AppColors.green,
             ),
             CustomButton(
               text: 'Ir a la segunda pagina',
               onPressed: () => redirectToPage(const Pokedex()),
-              backgroundColor: AppColors.blue, // Personaliza el color de fondo
-              textColor: Colors.white,
+              backgroundColor: AppColors.blue,
             )
           ],
         ),
