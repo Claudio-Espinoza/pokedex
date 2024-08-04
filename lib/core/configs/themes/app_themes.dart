@@ -23,4 +23,24 @@ class AppThemes {
       borderSide: const BorderSide(color: AppColors.iconGray),
     ),
   );
+
+  static final buttonThemePrimary = ElevatedButton.styleFrom(
+      backgroundColor: AppColors.green,
+      elevation: 0,
+      textStyle: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: Colors.black,
+          fontFamily: 'LeagueSpartan'),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)));
+
+  static final buttonThemeSecundary = ElevatedButton.styleFrom(
+      backgroundColor: AppColors.blue,
+      elevation: 0,
+      textStyle: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+          color: AppColors.fontContrast,
+          fontFamily: 'LeagueSpartan'),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)));
 }
