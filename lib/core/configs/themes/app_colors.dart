@@ -6,10 +6,14 @@ class AppColors {
   static const font = Color(0xff222222);
   static const disableFont = Color(0xff757575);
   static const input = Color(0xffEAE8F2);
+  static const border = Color(0XffE1E1E1);
   static const iconGray = Color(0xff717171);
   static const icon = Color(0xff222222);
   static const alertGreen = Color(0xff80FF79);
   static const alerRed = Color(0xfff69494);
+  static const red = Color(0xfff26b6b);
+  static const blue = Color(0xff50bfa0);
+  static const green = Color(0xff57aaf2);
 
   //--|| Colores por tipos ||--//
   static const steel = Color(0xffb0d0db); // Acero
