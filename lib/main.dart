@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_demo/core/configs/db/isar_helper.dart';
 import 'package:pokedex_demo/core/configs/themes/app_themes.dart';
 import 'package:pokedex_demo/presentation/landing/page/landing.dart';
 
 void main() async {
-  final isarHelper = IsarHelper();
-  await isarHelper.db;
-
   runApp(const MyApp());
 }
 

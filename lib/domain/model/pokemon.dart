@@ -1,76 +1,103 @@
-import 'package:isar/isar.dart';
+import 'package:hive/hive.dart';
 
 part 'pokemon.g.dart';
 
-@collection
-@Name("pokemon")
-class Pokemon {
-  @Name("id")
-  Id? id;
+@HiveType(typeId: 0)
+class Pokemon extends HiveObject {
+  @HiveField(0)
+  late String num;
 
-  @Index(name: "num", unique: true)
-  String? num;
+  @HiveField(1)
+  late String name;
 
-  @Name("name")
-  String? name;
+  @HiveField(2)
+  late String img;
 
-  @Name("img")
-  String? img;
+  @HiveField(3)
+  late List<String> type;
 
-  @Name("type")
-  List<String>? type;
+  @HiveField(4)
+  late About about;
 
-  @Name("about")
-  About? about;
+  @HiveField(5)
+  late Stats stats;
 
-  @Name("stats")
-  Stats? stats;
+  @HiveField(6)
+  late List<Evolution> evolutions;
 
-  @Name("nextEvolution")
-  List<Evolution>? nextEvolution;
+  Pokemon({
+    required this.num,
+    required this.name,
+    required this.img,
+    required this.type,
+    required this.about,
+    required this.stats,
+    required this.evolutions,
+  });
 }
 
-@embedded
-class Stats {
-  @Name("hp")
-  String? hp;
+@HiveType(typeId: 1)
+class About extends HiveObject {
+  @HiveField(0)
+  late String height;
 
-  @Name("base_attack")
-  String? baseAttack;
+  @HiveField(1)
+  late String weight;
 
-  @Name("base_defense")
-  String? baseDefense;
+  @HiveField(2)
+  late String category;
 
-  @Name("especial_attack")
-  String? especialAttack;
+  @HiveField(3)
+  late List<String> weaknesses;
 
-  @Name("especial_defense")
-  String? especialDefense;
-
-  @Name("speed")
-  String? speed;
+  About({
+    required this.height,
+    required this.weight,
+    required this.category,
+    required this.weaknesses,
+  });
 }
 
-@embedded
-class About {
-  @Name("height")
-  String? height;
+@HiveType(typeId: 2)
+class Stats extends HiveObject {
+  @HiveField(0)
+  late int hp;
 
-  @Name("weight")
-  String? weight;
+  @HiveField(1)
+  late int attack;
 
-  @Name("category")
-  String? category;
+  @HiveField(2)
+  late int defense;
 
-  @Name("weaknesses")
-  List<String>? weaknesses;
+  @HiveField(3)
+  late int spAttack;
+
+  @HiveField(4)
+  late int spDefense;
+
+  @HiveField(5)
+  late int speed;
+
+  Stats({
+    required this.hp,
+    required this.attack,
+    required this.defense,
+    required this.spAttack,
+    required this.spDefense,
+    required this.speed,
+  });
 }
 
-@embedded
-class Evolution {
-  @Name("num_evolution")
-  String? numEvolution;
+@HiveType(typeId: 3)
+class Evolution extends HiveObject {
+  @HiveField(0)
+  late String num;
 
-  @Name("name_evolution")
-  String? nameEvolution;
+  @HiveField(1)
+  late String name;
+
+  Evolution({
+    required this.num,
+    required this.name,
+  });
 }
