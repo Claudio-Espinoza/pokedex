@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:pokedex_demo/core/configs/themes/app_themes.dart';
+import 'package:pokedex_demo/domain/model/pokemon.dart';
 import 'package:pokedex_demo/presentation/landing/page/landing.dart';
 
 void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(PokemonAdapter());
+  Hive.registerAdapter(AboutAdapter());
+  Hive.registerAdapter(StatsAdapter());
+  Hive.registerAdapter(EvolutionAdapter());
+
   runApp(const MyApp());
 }
 
