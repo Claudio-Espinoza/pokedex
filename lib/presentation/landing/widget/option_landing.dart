@@ -30,12 +30,12 @@ class _OptionLandingState extends State<OptionLanding> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             CustomButton(
-              text: 'Ir a la primera pagina',
+              text: 'Pokédex',
               onPressed: () => redirectToPage(const Team()),
               backgroundColor: AppColors.green,
             ),
             CustomButton(
-              text: 'Ir a la segunda pagina',
+              text: 'Equipos',
               onPressed: () => redirectToPage(const Pokedex()),
               backgroundColor: AppColors.blue,
             )
