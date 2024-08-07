@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex_demo/common/widget/custom_buton.dart';
 import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
 import 'package:pokedex_demo/core/configs/themes/app_layer.dart';
 import 'package:pokedex_demo/common/widget/search_bard.dart';
@@ -11,19 +12,51 @@ class Pokedex extends StatefulWidget {
   _PokedexState createState() => _PokedexState();
 }
 
+class Pokemon {
+  var name;
+  var tipo = List.empty(growable: true);
+
+  Pokemon({
+    required this.name,
+    required this.tipo,
+  });
+}
+
+enum Tipos { Planta, Veneno, Agua, Fuego, Aire, Tierra }
+
 class _PokedexState extends State<Pokedex> {
   late TextEditingController searchController;
+  List<Pokemon> pokemons = [
+    Pokemon(name: "Bulbasaur", tipo: ["Planta", "Veneno"]),
+    Pokemon(name: "Squirtle", tipo: ["Agua"]),
+    Pokemon(name: "Venusaur", tipo: ["Planta", "Veneno"])
+  ];
+  List<Pokemon> seleccionados = <Pokemon>[];
+  Set<Tipos> tiposFilter = <Tipos>{};
 
   @override
   void initState() {
     super.initState();
     searchController = TextEditingController();
+    seleccionados = pokemons;
   }
 
   @override
   void dispose() {
     searchController.dispose();
     super.dispose();
+  }
+
+  void _filterPokemons() {
+    setState(() {
+      if (tiposFilter.isEmpty) {
+        seleccionados = pokemons;
+      } else {
+        seleccionados = pokemons.where((pokemon) {
+          return tiposFilter.any((tipo) => pokemon.tipo.contains(tipo.name));
+        }).toList();
+      }
+    });
   }
 
   @override
@@ -46,7 +79,8 @@ class _PokedexState extends State<Pokedex> {
                   children: [
                     IconButton(
                       onPressed: () => redirectToPage(const LandingPage()),
-                      icon: const Icon(Icons.arrow_back)),
+                      icon: const Icon(Icons.arrow_back),
+                    ),
                   ],
                 ),
                 Title(
@@ -60,28 +94,46 @@ class _PokedexState extends State<Pokedex> {
                   ),
                 ),
                 Container(width: 30),
-              ], // Este container me permite usar el spaceBetween para tener el Titulo al centro y la flecha a la izquierda de la manera mas limpia que encontre
+              ],
             ),
             Padding(
               padding: const EdgeInsets.only(bottom: 20, top: 20),
               child: SearchInput(controller: searchController),
             ),
-            Container(
-              height: 70,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
-                  Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
-                  Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
-                  Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
-                  Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
-                  Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
-                  Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
-                  Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
-                  Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
-                  Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
-                ],
+            Wrap(
+              spacing: 5.0,
+              children: Tipos.values.map((Tipos tipo) {
+                return FilterChip(
+                  labelStyle: TextStyle(),
+                  label: Text(tipo.name),
+                  selected: tiposFilter.contains(tipo),
+                  onSelected: (bool selected) {
+                    setState(() {
+                      if (selected) {
+                        tiposFilter.add(tipo);
+                      } else {
+                        tiposFilter.remove(tipo);
+                      }
+                      _filterPokemons();
+                    });
+                  },
+                );
+              }).toList(),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: seleccionados.length,
+                itemBuilder: (context, index) {
+                  return 
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: CustomButton(
+                        text: seleccionados[index].name +"; "+seleccionados[index].tipo.join(', '),
+                        onPressed: () => redirectToPage(const LandingPage()),
+                        backgroundColor: Colors.green),
+                    );
+                  
+                },
               ),
             ),
           ],
@@ -89,7 +141,8 @@ class _PokedexState extends State<Pokedex> {
       ),
     );
   }
-   Future<void> redirectToPage(Widget page) async {
+
+  Future<void> redirectToPage(Widget page) async {
     if (!mounted) return;
     Navigator.pushReplacement(
       context,
