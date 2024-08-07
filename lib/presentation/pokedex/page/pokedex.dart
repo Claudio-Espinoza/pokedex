@@ -13,47 +13,62 @@ class Pokedex extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: Padding(
-        padding: const EdgeInsets.only(top: 60, right: AppLayer.marginHorizontal, left: AppLayer.marginHorizontal ),
+        padding: const EdgeInsets.only(top: 80, right: AppLayer.marginHorizontal, left: AppLayer.marginHorizontal ),
         child: Column(
+        
           
           children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Stack(
-                
+        
+              Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Positioned(
-                    left: 0,
-                    top: 0,
-                    bottom: 0,
-                    child: Icon(Icons.arrow_back
-                    ),
+                  const Column(
+                    children: [
+                      Icon(Icons.arrow_back, size: 30,),
+                    ],
                   ),
-                  Center(
-                    child: Title(
-                      color: Colors.black,
-                      child: const Text(
-                        "Pokédex",
-                        style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  Title(
+                    color: Colors.black,
+                    child: const Text("Pokédex",style: 
+                    TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold),
+                    ),
                       ),
-                    ),
+                Container(width: 30,)], // Este container me permite usar el spaceBetween para tener el Titulo al centro y la flecha a la izquierda de la manera mas limpia que encontre
+              ),    
+              Padding(
+              padding: const EdgeInsets.only(bottom: 20, top: 20),
+              child: SearchInput(controller: searchController)),
+              Container(
+                height: 70,
+
+                child:
+                  ListView(
+                    
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
+                      Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
+                      Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
+                      Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
+                      Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
+                      Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
+                      Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
+                      Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
+                      Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
+                      Container(width: 70, height: 70, color: Colors.red, margin: const EdgeInsets.only(right: 10)),
+
+                    ],
                   ),
+
+              )
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: Container(
-                child:SearchInput(controller: searchController),
-              ),
-            ),
-              
-          ],
-        ),
-      ),
+           
+    
     );
   }
 }
