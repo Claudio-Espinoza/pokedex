@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:pokedex_demo/core/configs/themes/app_themes.dart';
 import 'package:pokedex_demo/domain/model/pokemon.dart';
+import 'package:pokedex_demo/domain/model/team.dart';
 import 'package:pokedex_demo/presentation/landing/page/landing.dart';
 
 void main() async {
@@ -10,6 +11,8 @@ void main() async {
   Hive.registerAdapter(AboutAdapter());
   Hive.registerAdapter(StatsAdapter());
   Hive.registerAdapter(EvolutionAdapter());
+  Hive.registerAdapter(TeamAdapter());
+  Hive.registerAdapter(PokemonTeamAdapter());
 
   runApp(const MyApp());
 }
