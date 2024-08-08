@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pokedex_demo/common/widget/custom_buton.dart';
 import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
 import 'package:pokedex_demo/core/configs/themes/app_layer.dart';
-import 'package:pokedex_demo/presentation/pokedex/page/pokedex.dart';
 import 'package:pokedex_demo/presentation/team/page/team.dart';
 
 class OptionLanding extends StatefulWidget {
@@ -36,7 +35,7 @@ class _OptionLandingState extends State<OptionLanding> {
             ),
             CustomButton(
               text: 'Equipos',
-              onPressed: () => redirectToPage(const Pokedex()),
+              onPressed: () => redirectToPage(const Team()),
               backgroundColor: AppColors.blue,
             )
           ],
