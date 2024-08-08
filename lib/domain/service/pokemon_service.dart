@@ -54,10 +54,29 @@ class PokemonService {
     }
   }
 
+  Future<Pokemon> findByName(String name) async {
+    try {
+      Box<Pokemon> pokemons = await Hive.openBox<Pokemon>('pokemonBox');
+
+      if (pokemons.isEmpty) {
+        throw Exception(
+            'Failed to fetch Pokemon: box is empty in findByName()');
+      } else {
+        return pokemons.values.firstWhere((pokemon) => pokemon.name == name);
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error fetching Pokemon data: $e');
+      }
+      throw Exception('Failed to fetch Pokemon in findByName()');
+    }
+  }
+
   Future<void> printAllPokemon(List<Pokemon> pokemonList) async {
     try {
       for (var pokemon in pokemonList) {
         if (kDebugMode) {
+          print('Name: ${pokemon.name}');
           print('Number: ${pokemon.num}');
           print('Type: ${pokemon.type.join(', ')}');
           print('Height: ${pokemon.about.height}');

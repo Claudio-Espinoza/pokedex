@@ -17,10 +17,14 @@ void main() async {
   Hive.registerAdapter(TeamAdapter());
   Hive.registerAdapter(PokemonTeamAdapter());
 
-  PokemonService pokemonService = PokemonService();
-  await pokemonService.fetchAndStorePokemon();
-  var pokemons = await pokemonService.getAllPokemon();
-  pokemonService.printAllPokemon(pokemons);
+  //PokemonService pokemonService = PokemonService();
+  //await pokemonService.fetchAndStorePokemon();
+
+  //Pokemon bulbasaur = await pokemonService.findByName("Bulbasaur");
+
+  //print(bulbasaur.evolutions);
+  //print(bulbasaur.name);
+  //print(bulbasaur.num);
 
   runApp(const MyApp());
 }
