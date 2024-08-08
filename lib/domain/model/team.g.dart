@@ -8,7 +8,7 @@ part of 'team.dart';
 
 class TeamAdapter extends TypeAdapter<Team> {
   @override
-  final int typeId = 0;
+  final int typeId = 4;
 
   @override
   Team read(BinaryReader reader) {
@@ -17,8 +17,8 @@ class TeamAdapter extends TypeAdapter<Team> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Team()
-      ..name = fields[0] as String
-      ..description = fields[1] as String
+      ..nameTeam = fields[0] as String
+      ..descriptionTeam = fields[1] as String
       ..contPokemon = fields[2] as int
       ..maxPokemon = fields[3] as int
       ..pokemonTeam = (fields[4] as List).cast<PokemonTeam>();
@@ -29,9 +29,9 @@ class TeamAdapter extends TypeAdapter<Team> {
     writer
       ..writeByte(5)
       ..writeByte(0)
-      ..write(obj.name)
+      ..write(obj.nameTeam)
       ..writeByte(1)
-      ..write(obj.description)
+      ..write(obj.descriptionTeam)
       ..writeByte(2)
       ..write(obj.contPokemon)
       ..writeByte(3)
@@ -53,7 +53,7 @@ class TeamAdapter extends TypeAdapter<Team> {
 
 class PokemonTeamAdapter extends TypeAdapter<PokemonTeam> {
   @override
-  final int typeId = 1;
+  final int typeId = 5;
 
   @override
   PokemonTeam read(BinaryReader reader) {
@@ -62,12 +62,12 @@ class PokemonTeamAdapter extends TypeAdapter<PokemonTeam> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return PokemonTeam()
-      ..num = fields[0] as String
-      ..name_pokemon = fields[1] as String
-      ..img = fields[2] as String
-      ..attack = fields[3] as String
-      ..defense = fields[4] as String
-      ..hp = fields[5] as String;
+      ..numTeam = fields[0] as String
+      ..namePokemon = fields[1] as String
+      ..imgTeam = fields[2] as String
+      ..attackTeam = fields[3] as String
+      ..defenseTeam = fields[4] as String
+      ..hpTeam = fields[5] as String;
   }
 
   @override
@@ -75,17 +75,17 @@ class PokemonTeamAdapter extends TypeAdapter<PokemonTeam> {
     writer
       ..writeByte(6)
       ..writeByte(0)
-      ..write(obj.num)
+      ..write(obj.numTeam)
       ..writeByte(1)
-      ..write(obj.name_pokemon)
+      ..write(obj.namePokemon)
       ..writeByte(2)
-      ..write(obj.img)
+      ..write(obj.imgTeam)
       ..writeByte(3)
-      ..write(obj.attack)
+      ..write(obj.attackTeam)
       ..writeByte(4)
-      ..write(obj.defense)
+      ..write(obj.defenseTeam)
       ..writeByte(5)
-      ..write(obj.hp);
+      ..write(obj.hpTeam);
   }
 
   @override

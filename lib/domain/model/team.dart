@@ -2,13 +2,13 @@ import 'package:hive/hive.dart';
 
 part 'team.g.dart';
 
-@HiveType(typeId: 0)
+@HiveType(typeId: 4)
 class Team extends HiveObject {
   @HiveField(0)
-  late String name;
+  late String nameTeam;
 
   @HiveField(1)
-  late String description;
+  late String descriptionTeam;
 
   @HiveField(2)
   late int contPokemon;
@@ -20,23 +20,23 @@ class Team extends HiveObject {
   late List<PokemonTeam> pokemonTeam;
 }
 
-@HiveType(typeId: 1)
+@HiveType(typeId: 5)
 class PokemonTeam extends HiveObject {
   @HiveField(0)
-  late String num;
+  late String numTeam;
 
   @HiveField(1)
-  late String name_pokemon;
+  late String namePokemon;
 
   @HiveField(2)
-  late String img;
+  late String imgTeam;
 
   @HiveField(3)
-  late String attack;
+  late String attackTeam;
 
   @HiveField(4)
-  late String defense;
+  late String defenseTeam;
 
   @HiveField(5)
-  late String hp;
+  late String hpTeam;
 }
