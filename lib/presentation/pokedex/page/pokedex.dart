@@ -27,7 +27,7 @@ class _PokedexState extends State<Pokedex> {
   late TextEditingController searchController;
   List<Pokemon> pokemons = [
     Pokemon(name: "Bulbasaur", tipo: ["Grass", "Poison"]),
-    Pokemon(name: "Squirtle", tipo: ["Wather"]),
+    Pokemon(name: "Squirtle", tipo: ["Water"]),
     Pokemon(name: "Venusaur", tipo: ["Grass", "Poison"])
   ];
   List<Pokemon> seleccionados = <Pokemon>[];
@@ -100,25 +100,48 @@ class _PokedexState extends State<Pokedex> {
                   bottom: AppLayer.paddingButton, top: AppLayer.paddingTop),
               child: SearchInput(controller: searchController),
             ),
-            Wrap(
-              spacing: 5.0,
-              children: Type.values.map((Type tipo) {
-                return FilterChip(
-                  labelStyle: const  TextStyle(),
-                  label: Text(tipo.type),
-                  selected: tiposFilter.contains(tipo),
-                  onSelected: (bool selected) {
-                    setState(() {
-                      if (selected) {
-                        tiposFilter.add(tipo);
-                      } else {
-                        tiposFilter.remove(tipo);
-                      }
-                      _filterPokemons();
-                    });
-                  },
-                );
-              }).toList(),
+           SizedBox(
+  height: 55, // Ajusta la altura según sea necesario
+  child: ListView(
+    scrollDirection: Axis.horizontal,
+    children: Type.values.map((Type tipo) {
+      final isSelected = tiposFilter.contains(tipo);
+      return Container(
+        width: 55,
+        height: 55,
+        margin: const EdgeInsets.symmetric(horizontal: 5.0),
+        child: InkWell(
+          onTap: () {
+            setState(() {
+              if (isSelected) {
+                tiposFilter.remove(tipo);
+              } else {
+                tiposFilter.add(tipo);
+              }
+              _filterPokemons();
+            });
+          },
+          child: ColorFiltered(
+            colorFilter: ColorFilter.mode(
+              isSelected ? Color.fromARGB(118, 0, 0, 0) : Color.fromARGB(0, 0, 0, 0),
+              BlendMode.multiply,
+            ),
+            child: Image.asset(tipo.path),
+          ),
+        ),
+      );
+    }).toList(),
+  ),
+)
+
+            ,
+            const Padding(
+              padding: EdgeInsets.only(top: 30),
+              child: Row(
+                children: [
+                  Text("Pokemon encontrados:", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w300)),
+                ],
+              ),
             ),
             Expanded(
               child: ListView.builder(
