@@ -4,6 +4,7 @@ import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
 import 'package:pokedex_demo/core/configs/themes/app_layer.dart';
 import 'package:pokedex_demo/common/widget/search_bard.dart';
 import 'package:pokedex_demo/presentation/landing/page/landing.dart';
+import 'package:pokedex_demo/common/enum/types.dart';
 
 class Pokedex extends StatefulWidget {
   const Pokedex({super.key});
@@ -22,17 +23,15 @@ class Pokemon {
   });
 }
 
-enum Tipos { Planta, Veneno, Agua, Fuego, Aire, Tierra }
-
 class _PokedexState extends State<Pokedex> {
   late TextEditingController searchController;
   List<Pokemon> pokemons = [
-    Pokemon(name: "Bulbasaur", tipo: ["Planta", "Veneno"]),
-    Pokemon(name: "Squirtle", tipo: ["Agua"]),
-    Pokemon(name: "Venusaur", tipo: ["Planta", "Veneno"])
+    Pokemon(name: "Bulbasaur", tipo: ["Grass", "Poison"]),
+    Pokemon(name: "Squirtle", tipo: ["Wather"]),
+    Pokemon(name: "Venusaur", tipo: ["Grass", "Poison"])
   ];
   List<Pokemon> seleccionados = <Pokemon>[];
-  Set<Tipos> tiposFilter = <Tipos>{};
+  Set<Type> tiposFilter = <Type>{};
 
   @override
   void initState() {
@@ -53,7 +52,7 @@ class _PokedexState extends State<Pokedex> {
         seleccionados = pokemons;
       } else {
         seleccionados = pokemons.where((pokemon) {
-          return tiposFilter.any((tipo) => pokemon.tipo.contains(tipo.name));
+          return tiposFilter.any((tipo) => pokemon.tipo.contains(tipo.type));
         }).toList();
       }
     });
@@ -103,10 +102,10 @@ class _PokedexState extends State<Pokedex> {
             ),
             Wrap(
               spacing: 5.0,
-              children: Tipos.values.map((Tipos tipo) {
+              children: Type.values.map((Type tipo) {
                 return FilterChip(
-                  labelStyle: TextStyle(),
-                  label: Text(tipo.name),
+                  labelStyle: const  TextStyle(),
+                  label: Text(tipo.type),
                   selected: tiposFilter.contains(tipo),
                   onSelected: (bool selected) {
                     setState(() {
