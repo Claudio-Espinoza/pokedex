@@ -19,13 +19,6 @@ void main() async {
 
   PokemonService pokemonService = PokemonService();
   await pokemonService.fetchAndStorePokemon();
-  
-
-  //Pokemon bulbasaur = await pokemonService.findByName("Bulbasaur");
-
-  //print(bulbasaur.evolutions);
-  //print(bulbasaur.name);
-  //print(bulbasaur.num);
 
   runApp(const MyApp());
 }
