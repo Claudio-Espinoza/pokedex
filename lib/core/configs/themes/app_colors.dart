@@ -16,19 +16,19 @@ class AppColors {
   static const green = Color(0xff50bfa0);
   static const fontContrast = Color(0xffffffff);
 
-  //--|| Colores por tipos ||--//
-  static const steel = Color(0xffb0d0db); // Acero
-  static const water = Color(0xff57aaf2); // Agua
-  static const incest = Color(0xffbecc53); // Insecto
+  //--|| Colores por tipos  #4393ee||--//
+  static const steel = Color(0xff5192a6); // Acero
+  static const water = Color(0xff4393ee); // Agua
+  static const incest = Color(0xff9fb032); // Insecto
   static const dragon = Color(0xff6777ee); // Dragon
-  static const thunderbolt = Color(0xffffd446); // Rayo
+  static const thunderbolt = Color(0xffffc120); // Rayo
   static const ghost = Color(0xff885d88); // Fantasma
   static const fire = Color(0xffee4e4f); // Fuego
   static const fairy = Color(0xfffa96fa); // Hada
-  static const ice = Color(0xff4edbff); // Hielo
+  static const ice = Color(0xff00a9dc); // Hielo
   static const struggle = Color(0xffff8b16); // Lucha
   static const normal = Color(0xff9fA19f); // Normal
-  static const plant = Color(0xff78e160); // Planta
+  static const plant = Color(0xff2ca081); // Planta
   static const psychic = Color(0xfff95f91); // Psíquico
   static const rock = Color(0xffc8c298); // Roca
   static const sinister = Color(0xff2c2625); // Siniestro
