@@ -5,7 +5,7 @@ import 'package:pokedex_demo/core/configs/themes/app_layer.dart';
 class CustomButton extends StatelessWidget {
   final VoidCallback onPressed;
   final String text;
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final Color textColor;
   final double borderRadius;
   final double height;
