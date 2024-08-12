@@ -17,8 +17,9 @@ void main() async {
   Hive.registerAdapter(TeamAdapter());
   Hive.registerAdapter(PokemonTeamAdapter());
 
-  //PokemonService pokemonService = PokemonService();
-  //await pokemonService.fetchAndStorePokemon();
+  PokemonService pokemonService = PokemonService();
+  await pokemonService.fetchAndStorePokemon();
+  
 
   //Pokemon bulbasaur = await pokemonService.findByName("Bulbasaur");
 
