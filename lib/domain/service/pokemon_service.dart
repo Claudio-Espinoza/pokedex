@@ -36,13 +36,47 @@ class PokemonService {
     }
   }
 
-  Future<void> printPokemonFromBox() async {
-    var box = await Hive.openBox<Pokemon>('pokemonBox');
+  Future<List<Pokemon>> getAllPokemon() async {
+    try {
+      Box<Pokemon> pokemons = await Hive.openBox<Pokemon>('pokemonBox');
 
-    for (var key in box.keys) {
-      var pokemon = box.get(key);
-      if (pokemon != null) {
+      if (pokemons.isEmpty) {
+        throw Exception(
+            'Failed to fetch Pokemon: box is empty in getAllPokemon()');
+      } else {
+        return pokemons.values.toList();
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error fetching Pokemon data: $e');
+      }
+      throw Exception('Failed to fetch Pokemon in getAllPokemon()');
+    }
+  }
+
+  Future<Pokemon> findByName(String name) async {
+    try {
+      Box<Pokemon> pokemons = await Hive.openBox<Pokemon>('pokemonBox');
+
+      if (pokemons.isEmpty) {
+        throw Exception(
+            'Failed to fetch Pokemon: box is empty in findByName()');
+      } else {
+        return pokemons.values.firstWhere((pokemon) => pokemon.name == name);
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error fetching Pokemon data: $e');
+      }
+      throw Exception('Failed to fetch Pokemon in findByName()');
+    }
+  }
+
+  Future<void> printAllPokemon(List<Pokemon> pokemonList) async {
+    try {
+      for (var pokemon in pokemonList) {
         if (kDebugMode) {
+          print('Name: ${pokemon.name}');
           print('Number: ${pokemon.num}');
           print('Type: ${pokemon.type.join(', ')}');
           print('Height: ${pokemon.about.height}');
@@ -59,6 +93,10 @@ class PokemonService {
               'Evolutions: ${pokemon.evolutions.map((e) => e.name).join(', ')}');
           print('---');
         }
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error printing Pokemon data: $e');
       }
     }
   }
