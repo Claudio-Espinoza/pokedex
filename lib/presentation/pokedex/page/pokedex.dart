@@ -101,38 +101,38 @@ class _PokedexState extends State<Pokedex> {
               child: SearchInput(controller: searchController),
             ),
            SizedBox(
-  height: 55, // Ajusta la altura según sea necesario
-  child: ListView(
-    scrollDirection: Axis.horizontal,
-    children: Type.values.map((Type tipo) {
-      final isSelected = tiposFilter.contains(tipo);
-      return Container(
-        width: 55,
-        height: 55,
-        margin: const EdgeInsets.symmetric(horizontal: 5.0),
-        child: InkWell(
-          onTap: () {
-            setState(() {
-              if (isSelected) {
-                tiposFilter.remove(tipo);
-              } else {
-                tiposFilter.add(tipo);
-              }
-              _filterPokemons();
-            });
-          },
-          child: ColorFiltered(
-            colorFilter: ColorFilter.mode(
-              isSelected ? Color.fromARGB(118, 0, 0, 0) : Color.fromARGB(0, 0, 0, 0),
-              BlendMode.multiply,
+            height: 55,
+            child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: Type.values.map((Type tipo) {
+              final isSelected = tiposFilter.contains(tipo);
+              return Container(
+                width: 55,
+                height: 55,
+                margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      if (isSelected) {
+                        tiposFilter.remove(tipo);
+                      } else {
+                        tiposFilter.add(tipo);
+                      }
+                      _filterPokemons();
+                    });
+                  },
+                  child: ColorFiltered(
+                    colorFilter: ColorFilter.mode(
+                      isSelected ? const Color.fromARGB(41, 0, 0, 0): const Color.fromARGB(0, 0, 0, 0),
+                      BlendMode.multiply,
+                    ),
+                    child: Image.asset(tipo.path),
+                  ),
+                ),
+              );
+            }).toList(),
             ),
-            child: Image.asset(tipo.path),
-          ),
-        ),
-      );
-    }).toList(),
-  ),
-)
+            )
 
             ,
             const Padding(
