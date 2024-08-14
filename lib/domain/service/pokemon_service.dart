@@ -71,33 +71,4 @@ class PokemonService {
       throw Exception('Failed to fetch Pokemon in findByName()');
     }
   }
-
-  Future<void> printAllPokemon(List<Pokemon> pokemonList) async {
-    try {
-      for (var pokemon in pokemonList) {
-        if (kDebugMode) {
-          print('Name: ${pokemon.name}');
-          print('Number: ${pokemon.num}');
-          print('Type: ${pokemon.type.join(', ')}');
-          print('Height: ${pokemon.about.height}');
-          print('Weight: ${pokemon.about.weight}');
-          print('Category: ${pokemon.about.category}');
-          print('Weaknesses: ${pokemon.about.weaknesses.join(', ')}');
-          print('HP: ${pokemon.stats.hp}');
-          print('Attack: ${pokemon.stats.attack}');
-          print('Defense: ${pokemon.stats.defense}');
-          print('Sp. Attack: ${pokemon.stats.spAttack}');
-          print('Sp. Defense: ${pokemon.stats.spDefense}');
-          print('Speed: ${pokemon.stats.speed}');
-          print(
-              'Evolutions: ${pokemon.evolutions.map((e) => e.name).join(', ')}');
-          print('---');
-        }
-      }
-    } catch (e) {
-      if (kDebugMode) {
-        print('Error printing Pokemon data: $e');
-      }
-    }
-  }
 }
