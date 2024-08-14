@@ -13,7 +13,6 @@ void main() async {
   Hive.registerAdapter(AboutAdapter());
   Hive.registerAdapter(StatsAdapter());
   Hive.registerAdapter(EvolutionAdapter());
-
   Hive.registerAdapter(TeamAdapter());
   Hive.registerAdapter(PokemonTeamAdapter());
 

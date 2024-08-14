@@ -4,7 +4,6 @@ import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
 import 'package:pokedex_demo/core/configs/themes/app_layer.dart';
 import 'package:pokedex_demo/presentation/landing/page/landing.dart';
 import 'package:pokedex_demo/presentation/team/page/team_form.dart';
-// import 'package:pokedex_demo/domain/service/pokemon_service.dart';
 
 class Team extends StatelessWidget {
   const Team({super.key});
