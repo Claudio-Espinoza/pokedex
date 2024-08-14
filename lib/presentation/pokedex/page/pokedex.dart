@@ -10,6 +10,7 @@ import 'package:pokedex_demo/domain/model/pokemon.dart';
 import 'package:pokedex_demo/domain/service/pokemon_service.dart';
 import 'package:pokedex_demo/presentation/landing/page/landing.dart';
 import 'package:pokedex_demo/common/enum/types.dart';
+import 'package:pokedex_demo/presentation/pokedex/page/pokemon_profile.dart';
 
 class Pokedex extends StatefulWidget {
   const Pokedex({super.key});
@@ -166,7 +167,7 @@ class _PokedexState extends State<Pokedex> {
                               text:
                                   "${filteredPokemons[index].name}; ${filteredPokemons[index].type.join(', ')}",
                               onPressed: () =>
-                                  redirectToPage(const LandingPage()),
+                                  redirectToPage(PokemonProfile(pokemon: filteredPokemons[index] )),
                               backgroundColor: TypeColor.pokemonTypeColors[filteredPokemons[index].type[0].toString()]
                         ));
                       },
