@@ -18,6 +18,13 @@ class Team extends HiveObject {
 
   @HiveField(4)
   late List<PokemonTeam> pokemonTeam;
+
+  Team(
+      {required this.nameTeam,
+      required this.descriptionTeam,
+      required this.contPokemon,
+      required this.maxPokemon,
+      required this.pokemonTeam});
 }
 
 @HiveType(typeId: 5)
@@ -39,4 +46,12 @@ class PokemonTeam extends HiveObject {
 
   @HiveField(5)
   late String hpTeam;
+
+  PokemonTeam(
+      {required this.numTeam,
+      required this.namePokemon,
+      required this.imgTeam,
+      required this.attackTeam,
+      required this.defenseTeam,
+      required this.hpTeam});
 }

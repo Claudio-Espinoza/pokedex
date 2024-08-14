@@ -4,6 +4,7 @@ import 'package:pokedex_demo/core/configs/themes/app_themes.dart';
 import 'package:pokedex_demo/domain/model/pokemon.dart';
 import 'package:pokedex_demo/domain/model/team.dart';
 import 'package:pokedex_demo/domain/service/pokemon_service.dart';
+import 'package:pokedex_demo/domain/service/team_service.dart';
 import 'package:pokedex_demo/presentation/landing/page/landing.dart';
 
 void main() async {
@@ -18,6 +19,11 @@ void main() async {
 
   PokemonService pokemonService = PokemonService();
   await pokemonService.fetchAndStorePokemon();
+
+  TeamService teamService = TeamService();
+  await teamService.fetchAndStoreTeam();
+  var element = await teamService.getAllTeam();
+  print(teamService.printAllPokemon(element));
 
   runApp(const MyApp());
 }

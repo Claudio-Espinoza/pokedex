@@ -16,12 +16,13 @@ class TeamAdapter extends TypeAdapter<Team> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Team()
-      ..nameTeam = fields[0] as String
-      ..descriptionTeam = fields[1] as String
-      ..contPokemon = fields[2] as int
-      ..maxPokemon = fields[3] as int
-      ..pokemonTeam = (fields[4] as List).cast<PokemonTeam>();
+    return Team(
+      nameTeam: fields[0] as String,
+      descriptionTeam: fields[1] as String,
+      contPokemon: fields[2] as int,
+      maxPokemon: fields[3] as int,
+      pokemonTeam: (fields[4] as List).cast<PokemonTeam>(),
+    );
   }
 
   @override
@@ -61,13 +62,14 @@ class PokemonTeamAdapter extends TypeAdapter<PokemonTeam> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return PokemonTeam()
-      ..numTeam = fields[0] as String
-      ..namePokemon = fields[1] as String
-      ..imgTeam = fields[2] as String
-      ..attackTeam = fields[3] as String
-      ..defenseTeam = fields[4] as String
-      ..hpTeam = fields[5] as String;
+    return PokemonTeam(
+      numTeam: fields[0] as String,
+      namePokemon: fields[1] as String,
+      imgTeam: fields[2] as String,
+      attackTeam: fields[3] as String,
+      defenseTeam: fields[4] as String,
+      hpTeam: fields[5] as String,
+    );
   }
 
   @override
