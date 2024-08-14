@@ -22,8 +22,6 @@ void main() async {
 
   TeamService teamService = TeamService();
   await teamService.fetchAndStoreTeam();
-  var element = await teamService.getAllTeam();
-  print(teamService.printAllPokemon(element));
 
   runApp(const MyApp());
 }
