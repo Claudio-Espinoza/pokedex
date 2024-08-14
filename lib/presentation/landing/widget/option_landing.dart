@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex_demo/common/helper/util.dart';
+import 'package:pokedex_demo/common/widget/custom_buton.dart';
+import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
+import 'package:pokedex_demo/core/configs/themes/app_layer.dart';
 import 'package:pokedex_demo/presentation/pokedex/page/pokedex.dart';
 import 'package:pokedex_demo/presentation/team/page/team.dart';
 
@@ -17,31 +21,27 @@ class _OptionLandingState extends State<OptionLanding> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.only(
+            bottom: AppLayer.marginVertical + 30,
+            left: AppLayer.marginHorizontal,
+            right: AppLayer.marginHorizontal),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ElevatedButton(
-              onPressed: () => redirectToPage(const Team()),
-              child: const Text('Ir a Primera Página'),
+            CustomButton(
+              text: 'Pokédex',
+              onPressed: () => Util.redirectToPage(context, const Pokedex()),
+              backgroundColor: AppColors.green,
             ),
-            ElevatedButton(
-              onPressed: () => redirectToPage(const Pokedex()),
-              child: const Text('Ir a Segunda Página'),
-            ),
+            CustomButton(
+              text: 'Equipos',
+              onPressed: () => Util.redirectToPage(context, const Team()),
+              backgroundColor: AppColors.blue,
+            )
           ],
         ),
-      ),
-    );
-  }
-
-  Future<void> redirectToPage(Widget page) async {
-    if (!mounted) return;
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (BuildContext context) => page,
       ),
     );
   }
