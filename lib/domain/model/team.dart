@@ -19,12 +19,13 @@ class Team extends HiveObject {
   @HiveField(4)
   late List<PokemonTeam> pokemonTeam;
 
-  Team(
-      {required this.nameTeam,
-      required this.descriptionTeam,
-      required this.contPokemon,
-      required this.maxPokemon,
-      required this.pokemonTeam});
+  Team({
+    this.nameTeam = 'Nombre por defecto',
+    this.descriptionTeam = 'Descripción por defecto',
+    this.contPokemon = 0,
+    this.maxPokemon = 5,
+    List<PokemonTeam>? pokemonTeam,
+  }) : pokemonTeam = (pokemonTeam ?? []);
 }
 
 @HiveType(typeId: 5)
