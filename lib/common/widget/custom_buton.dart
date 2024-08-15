@@ -9,15 +9,18 @@ class CustomButton extends StatelessWidget {
   final Color textColor;
   final double borderRadius;
   final double height;
+  final List<String> subtitleCont;
 
-  const CustomButton(
-      {super.key,
-      required this.onPressed,
-      required this.text,
-      this.backgroundColor = AppColors.blue,
-      this.textColor = AppColors.fontContrast,
-      this.borderRadius = AppLayer.borderRadius + 10,
-      this.height = 70});
+  CustomButton({
+    super.key,
+    required this.onPressed,
+    required this.text,
+    this.backgroundColor = AppColors.blue,
+    this.textColor = AppColors.fontContrast,
+    this.borderRadius = AppLayer.borderRadius + 10,
+    this.height = 70,
+    List<String>? subtitleCont,
+  }) : subtitleCont = text.split(RegExp(r'[;,]')).map((e) => e.trim()).toList();
 
   @override
   Widget build(BuildContext context) {
@@ -41,15 +44,15 @@ class CustomButton extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned.fill(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: AppLayer.marginHorizontal - 10),
-                        child: Text(
-                          text,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: AppLayer.marginHorizontal - 10),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          subtitleCont.first,
                           style: TextStyle(
                             color: textColor,
                             fontSize: 25,
@@ -57,8 +60,40 @@ class CustomButton extends StatelessWidget {
                             fontFamily: 'LeagueSpartan',
                           ),
                         ),
-                      )
-                    ],
+                        if (subtitleCont.length >= 2)
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              for (int i = 1; i < subtitleCont.length; i++)
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      right: AppLayer.marginHorizontal - 20),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: const Color.fromRGBO(
+                                          255, 255, 255, 0.4),
+                                      borderRadius: BorderRadius.circular(
+                                          5), // Agregar radio aquí
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10),
+                                      child: Text(
+                                        subtitleCont.elementAt(i),
+                                        style: TextStyle(
+                                          color: textColor,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'LeagueSpartan',
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                            ],
+                          )
+                      ],
+                    ),
                   ),
                 ),
                 Positioned(
