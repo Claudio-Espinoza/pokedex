@@ -64,7 +64,7 @@ class AppThemes {
 
   static ButtonStyle customButtonStyle({
     Color backgroundColor = AppColors.alerRed,
-    double borderRadius = 12.0,
+    double borderRadius = 10.0,
     double elevation = 5.0,
     double size = 150,
     EdgeInsetsGeometry padding = const EdgeInsets.symmetric(
