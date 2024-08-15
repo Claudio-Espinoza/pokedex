@@ -1,5 +1,4 @@
 enum Type {
-
   normal(path: 'assets/icon/elements/tipo-normal.png', type: "Normal"),
   fire(path: 'assets/icon/elements/tipo-fuego.png', type: "Fire"),
   water(path: 'assets/icon/elements/tipo-agua.png', type: "Water"),
@@ -16,16 +15,7 @@ enum Type {
   ghost(path: 'assets/icon/elements/tipo-fantasma.png', type: "Ghost"),
   dragon(path: 'assets/icon/elements/tipo-dragon.png', type: "Dragon");
 
- 
-
-  
-
-  const Type({ 
-    required this.path,
-    required this.type
-  });
+  const Type({required this.path, required this.type});
   final String path;
   final String type;
-  
-
 }
