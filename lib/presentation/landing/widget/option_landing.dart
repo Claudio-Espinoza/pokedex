@@ -37,7 +37,7 @@ class _OptionLandingState extends State<OptionLanding> {
             ),
             CustomButton(
               text: 'Equipos',
-              onPressed: () => Util.redirectToPage(context, const Team()),
+              onPressed: () => Util.redirectToPage(context, const TeamPage()),
               backgroundColor: AppColors.blue,
             )
           ],
