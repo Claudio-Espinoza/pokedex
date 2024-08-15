@@ -19,7 +19,7 @@ class ListTeam extends HookWidget {
       future: teams,
       builder: (BuildContext context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
@@ -43,7 +43,7 @@ class ListTeam extends HookWidget {
             },
           );
         } else {
-          return Center(child: Text('No teams available'));
+          return const Center(child: Text('No teams available'));
         }
         // Add a return statement here
       },
