@@ -6,8 +6,8 @@ import 'package:pokedex_demo/presentation/landing/page/landing.dart';
 import 'package:pokedex_demo/presentation/team/page/team_form.dart';
 import 'package:pokedex_demo/presentation/team/widget/list_team.dart';
 
-class Team extends StatelessWidget {
-  const Team({super.key});
+class TeamPage extends StatelessWidget {
+  const TeamPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,9 @@ class Team extends StatelessWidget {
             ),
             const Flexible(
               flex: 8,
-              child: ListTeam(),
+              child: Padding(
+                  padding: EdgeInsets.only(top: AppLayer.paddingTop),
+                  child: ListTeam()),
             )
           ],
         ),

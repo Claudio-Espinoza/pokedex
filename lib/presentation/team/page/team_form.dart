@@ -4,6 +4,7 @@ import 'package:pokedex_demo/common/helper/util.dart';
 import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
 import 'package:pokedex_demo/core/configs/themes/app_layer.dart';
 import 'package:pokedex_demo/presentation/team/page/team.dart';
+import 'package:pokedex_demo/presentation/team/widget/input_team.dart';
 
 class TeamForm extends HookWidget {
   const TeamForm({super.key});
@@ -30,7 +31,7 @@ class TeamForm extends HookWidget {
                   children: [
                     IconButton(
                       onPressed: () =>
-                          Util.redirectToPage(context, const Team()),
+                          Util.redirectToPage(context, const TeamPage()),
                       icon: const Icon(Icons.arrow_back),
                     ),
                     const Spacer(flex: 2),
@@ -49,12 +50,7 @@ class TeamForm extends HookWidget {
                 ),
               ),
             ),
-            Flexible(
-              flex: 8,
-              child: Container(
-                color: AppColors.alertGreen,
-              ),
-            )
+            const Flexible(flex: 8, child: InputTeam()),
           ],
         ),
       ),
