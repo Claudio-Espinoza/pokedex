@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/adapters.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pokedex_demo/core/configs/themes/app_themes.dart';
 import 'package:pokedex_demo/domain/model/pokemon.dart';
 import 'package:pokedex_demo/domain/model/team.dart';
