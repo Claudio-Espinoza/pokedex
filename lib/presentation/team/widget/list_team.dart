@@ -6,7 +6,7 @@ import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
 import 'package:pokedex_demo/core/configs/themes/app_layer.dart';
 import 'package:pokedex_demo/domain/model/team.dart';
 import 'package:pokedex_demo/domain/service/team_service.dart';
-import 'package:pokedex_demo/presentation/landing/page/landing.dart';
+import 'package:pokedex_demo/presentation/team/page/team_composition.dart';
 
 class ListTeam extends HookWidget {
   const ListTeam({super.key});
@@ -35,8 +35,8 @@ class ListTeam extends HookWidget {
                     vertical: AppLayer.marginHorizontal - 20),
                 child: CustomButton(
                   text: uniqueTeams[index].nameTeam,
-                  onPressed: () =>
-                      Util.redirectToPage(context, const LandingPage()),
+                  onPressed: () => Util.redirectToPage(context,
+                      CompositionTeam(teamName: uniqueTeams[index].nameTeam)),
                   backgroundColor: AppColors.red,
                 ),
               );
