@@ -22,21 +22,37 @@ class TeamService {
     }
   }
 
-  Future<int> getTeamIndexByName(String teamName) async {
+  Future<Team?> getTeamIndexByName(String teamName) async {
     try {
       Box<Team> teamBox = await Hive.openBox<Team>('teamBox');
       for (int i = 0; i < teamBox.length; i++) {
         Team? team = teamBox.getAt(i);
         if (team != null && team.nameTeam == teamName) {
-          return i;
+          return teamBox.getAt(i);
         }
       }
-      return -1;
+      return null;
     } catch (e) {
       if (kDebugMode) {
         print('Error getting team index by name: $e');
       }
-      return -1;
+      return null;
+    }
+  }
+
+  Future<List<PokemonTeam>> getPokemonList(name) async {
+    try {
+      Team? team = await getTeamIndexByName(name);
+      if (team != null) {
+        return team.pokemonTeam;
+      } else {
+        return [];
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error getting Pokemon list: $e');
+      }
+      return [];
     }
   }
 

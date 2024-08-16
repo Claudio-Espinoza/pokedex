@@ -42,11 +42,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-
-# Generated
-pubspec.lock
-pubspec.yaml
-ios/Flutter/flutter_export_environment.sh
-ios/Flutter/Generated.xcconfig
-macos/Flutter/ephemeral/flutter_export_environment.sh
-macos/Flutter/ephemeral/Flutter-Generated.xcconfig
+# iOS generated files
+ios/Runner/GeneratedPluginRegistrant.h
+ios/Runner/GeneratedPluginRegistrant.m
