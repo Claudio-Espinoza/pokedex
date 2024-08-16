@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class AppColors {
   //--|| Colores de sistema ||--//
-  static const background = Color(0xfff2f2f2);
+  static const background = Color(0xfff4f4f4);
   static const font = Color(0xff222222);
   static const disableFont = Color(0xff757575);
   static const input = Color(0xffEAE8F2);

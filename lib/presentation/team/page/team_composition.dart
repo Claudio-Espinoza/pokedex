@@ -3,11 +3,12 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:pokedex_demo/common/helper/util.dart';
 import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
 import 'package:pokedex_demo/core/configs/themes/app_layer.dart';
-import 'package:pokedex_demo/presentation/team/page/team.dart';
-import 'package:pokedex_demo/presentation/team/widget/input_team.dart';
+import 'package:pokedex_demo/presentation/landing/page/landing.dart';
+import 'package:pokedex_demo/presentation/team/widget/list_pokemon.dart';
 
-class TeamForm extends HookWidget {
-  const TeamForm({super.key});
+class CompositionTeam extends HookWidget {
+  final String teamName;
+  const CompositionTeam({super.key, required this.teamName});
 
   @override
   Widget build(BuildContext context) {
@@ -27,18 +28,17 @@ class TeamForm extends HookWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     IconButton(
                       onPressed: () =>
-                          Util.redirectToPage(context, const TeamPage()),
+                          Util.redirectToPage(context, const LandingPage()),
                       icon: const Icon(Icons.arrow_back),
                     ),
                     const Spacer(flex: 2),
                     Title(
                       color: AppColors.font,
                       child: const Text(
-                        "Formación",
+                        "Team",
                         style: TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
@@ -50,7 +50,7 @@ class TeamForm extends HookWidget {
                 ),
               ),
             ),
-            const Flexible(flex: 8, child: InputTeam()),
+            Flexible(flex: 8, child: PokemonList(name: teamName))
           ],
         ),
       ),

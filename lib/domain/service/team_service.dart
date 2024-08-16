@@ -22,21 +22,37 @@ class TeamService {
     }
   }
 
-  Future<int> getTeamIndexByName(String teamName) async {
+  Future<Team?> getTeamIndexByName(String teamName) async {
     try {
       Box<Team> teamBox = await Hive.openBox<Team>('teamBox');
       for (int i = 0; i < teamBox.length; i++) {
         Team? team = teamBox.getAt(i);
         if (team != null && team.nameTeam == teamName) {
-          return i;
+          return teamBox.getAt(i);
         }
       }
-      return -1;
+      return null;
     } catch (e) {
       if (kDebugMode) {
         print('Error getting team index by name: $e');
       }
-      return -1;
+      return null;
+    }
+  }
+
+  Future<List<PokemonTeam>> getPokemonList(name) async {
+    try {
+      Team? team = await getTeamIndexByName(name);
+      if (team != null) {
+        return team.pokemonTeam;
+      } else {
+        return [];
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error getting Pokemon list: $e');
+      }
+      return [];
     }
   }
 
@@ -86,7 +102,7 @@ class TeamService {
             nameTeam: 'Equipo piedra',
             contPokemon: 5,
             maxPokemon: 5,
-            descriptionTeam: 'Equipo de piedra',
+            descriptionTeam: 'piedra',
             pokemonTeam: [
               PokemonTeam(
                   numTeam: '1',
@@ -109,7 +125,7 @@ class TeamService {
             nameTeam: 'Equipo fuego',
             contPokemon: 2,
             maxPokemon: 5,
-            descriptionTeam: 'Equipo de fuego',
+            descriptionTeam: 'fuego',
             pokemonTeam: [
               PokemonTeam(
                   numTeam: '1',
@@ -132,7 +148,7 @@ class TeamService {
             nameTeam: 'Equipo agua',
             contPokemon: 2,
             maxPokemon: 5,
-            descriptionTeam: 'Equipo de agua',
+            descriptionTeam: 'agua',
             pokemonTeam: [
               PokemonTeam(
                   numTeam: '7',
@@ -152,11 +168,12 @@ class TeamService {
                   hpTeam: '59'),
             ])
       ];
-
       Box<Team> teamBox = await Hive.openBox<Team>('teamBox');
 
-      for (var team in exampleTeams) {
-        await teamBox.add(team);
+      if (teamBox.isEmpty) {
+        for (var team in exampleTeams) {
+          await teamBox.add(team);
+        }
       }
 
       if (kDebugMode) {

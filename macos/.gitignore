@@ -1,7 +1,52 @@
 # Flutter-related
 **/Flutter/ephemeral/
 **/Pods/
+**/Flutter/App.framework
+**/Flutter/Flutter.framework
+**/Flutter/Generated.xcconfig
 
-# Xcode-related
-**/dgph
-**/xcuserdata/
+# Dart/Pub related
+.dart_tool/
+.packages
+.pub-cache/
+build/
+
+# Android related
+**/gradle-wrapper.jar
+**/gradle-wrapper.properties
+**/local.properties
+**/gradlew
+**/gradlew.bat
+**/gradle/
+**/build/
+**/app/build/
+**/android/.gradle/
+**/android/.idea/
+**/android/.settings/
+**/android/build/
+
+# iOS related
+**/ios/Flutter/
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/ephemeral/
+
+# IntelliJ related
+.idea/
+*.iml
+
+# VS Code related
+.vscode/
+
+# macOS related
+.DS_Store
+
+# Windows related
+Thumbs.db
+*.log
+*.lock
+*.tmp
+*.temp

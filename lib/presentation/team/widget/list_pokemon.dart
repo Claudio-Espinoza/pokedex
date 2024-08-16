@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:pokedex_demo/common/helper/util.dart';
 import 'package:pokedex_demo/common/widget/custom_buton.dart';
 import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
 import 'package:pokedex_demo/core/configs/themes/app_layer.dart';
 import 'package:pokedex_demo/domain/model/team.dart';
 import 'package:pokedex_demo/domain/service/team_service.dart';
-import 'package:pokedex_demo/presentation/team/page/team_composition.dart';
 
-class ListTeam extends HookWidget {
-  const ListTeam({super.key});
+class PokemonList extends HookWidget {
+  final String name;
+  const PokemonList({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
-    Future<List<Team>> teams = TeamService().getAllTeam();
+    Future<List<PokemonTeam>> teams = TeamService().getPokemonList(name);
 
-    return FutureBuilder<List<Team>>(
+    return FutureBuilder<List<PokemonTeam>>(
       future: teams,
       builder: (BuildContext context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -34,9 +33,8 @@ class ListTeam extends HookWidget {
                     horizontal: AppLayer.marginHorizontal,
                     vertical: AppLayer.marginHorizontal - 20),
                 child: CustomButton(
-                  text: uniqueTeams[index].nameTeam,
-                  onPressed: () => Util.redirectToPage(context,
-                      CompositionTeam(teamName: uniqueTeams[index].nameTeam)),
+                  text: uniqueTeams[index].namePokemon,
+                  onPressed: () => {},
                   backgroundColor: AppColors.red,
                 ),
               );
