@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=C:\Dev\Var\flutter\flutter
-FLUTTER_APPLICATION_PATH=C:\Dev\Software\flutter\pokedex
+FLUTTER_ROOT=C:\Users\datit\flutter
+FLUTTER_APPLICATION_PATH=C:\Users\datit\OneDrive\Documentos\Git\pokedex_2\pokedex
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_TARGET=lib\main.dart
 FLUTTER_BUILD_DIR=build
