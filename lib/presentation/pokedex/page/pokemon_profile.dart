@@ -112,9 +112,7 @@ class _PokemonProfileState extends State<PokemonProfile> {
                                             const Text("Tipo",),
                                             Row(
                                               children: [
-                                                widget.pokemon.type.map(tipo){
-                                                  
-                                                }
+                                                
                                               ],
                                             )
                                           ],
