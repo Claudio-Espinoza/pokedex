@@ -105,7 +105,20 @@ class _PokemonProfileState extends State<PokemonProfile> {
                                       children: [
                                         Container(
                                           color: Colors.green 
-                                        ,child: const Text("Tipo",)),
+                                        ,child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            const Text("Tipo",),
+                                            Row(
+                                              children: [
+                                                widget.pokemon.type.map(tipo){
+                                                  
+                                                }
+                                              ],
+                                            )
+                                          ],
+                                        )),
                                       ],
                                     
                                     ),
