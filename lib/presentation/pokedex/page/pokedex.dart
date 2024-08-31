@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:pokedex_demo/common/enum/type_colors.dart';
+import 'package:pokedex_demo/common/helper/util.dart';
 import 'package:pokedex_demo/common/widget/custom_buton.dart';
 import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
 import 'package:pokedex_demo/core/configs/themes/app_layer.dart';
@@ -167,7 +168,7 @@ class _PokedexState extends State<Pokedex> {
                               text:
                                   "${filteredPokemons[index].name}; ${filteredPokemons[index].type.join(', ')}",
                               onPressed: () =>
-                                  redirectToPage(PokemonProfile(pokemon: filteredPokemons[index] )),
+                              Util.redirectToPage(context, PokemonProfile(pokemon: filteredPokemons[index])),
                               backgroundColor: TypeColor.pokemonTypeColors[filteredPokemons[index].type[0].toString()]
                         ));
                       },
@@ -192,5 +193,7 @@ class _PokedexState extends State<Pokedex> {
         builder: (BuildContext context) => page,
       ),
     );
+
+
   }
 }
