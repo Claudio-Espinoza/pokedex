@@ -14,9 +14,16 @@ class PokemonType extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8),
-      color: TypeColor.pokemonTypeColors[tipo],
-      child: Text(tipo)
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      width: 80,
+      decoration: BoxDecoration(
+        color: TypeColor.pokemonTypeColors[tipo],
+        borderRadius: BorderRadius.circular(5)
+      ),
+      child: Text(tipo,textAlign: TextAlign.center  ,style: const TextStyle(
+        color: Colors.white
+        
+      )),
     );
   }
 }
