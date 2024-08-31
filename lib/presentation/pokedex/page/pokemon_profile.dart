@@ -3,8 +3,11 @@ import 'dart:js_interop';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pokedex_demo/common/enum/type_colors.dart';
+import 'package:pokedex_demo/common/helper/util.dart';
+import 'package:pokedex_demo/common/widget/pokemon_type.dart';
 import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
 import 'package:pokedex_demo/core/configs/themes/app_themes.dart';
+import 'package:pokedex_demo/presentation/pokedex/page/pokedex.dart';
 
 import '../../../domain/model/pokemon.dart';
 
@@ -46,7 +49,7 @@ class _PokemonProfileState extends State<PokemonProfile> {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
                 child: DefaultTabController(
                   length: 3,
                   child: Column(
@@ -65,13 +68,13 @@ class _PokemonProfileState extends State<PokemonProfile> {
                         child: TabBarView(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(20.0),
+                              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
                               child: Column(
                                 children: [
                                   Row(
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.all(22.0),
+                                        padding: const EdgeInsets.symmetric(horizontal: 22,vertical: 10),
                                         child: Column(
                                           
                                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +87,7 @@ class _PokemonProfileState extends State<PokemonProfile> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 40,vertical: 22),
+                                        padding: const EdgeInsets.symmetric(horizontal: 40,vertical: 10),
                                         child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
@@ -103,46 +106,53 @@ class _PokemonProfileState extends State<PokemonProfile> {
                                       
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       children: [
-                                        Container(
-                                          color: Colors.green 
-                                        ,child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            const Text("Tipo",),
-                                            Row(
-                                              children: [
-                                                widget.pokemon.type.map(tipo){
-                                                  
-                                                }
-                                              ],
-                                            )
-                                          ],
-                                        )),
+                                        Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          const Text("Tipo",style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500
+                                          )),
+                                          Wrap(
+                                            spacing: 15,
+                                            children: widget.pokemon.type.map((String type){
+                                              return PokemonType(tipo: type);
+                                            }).toList()
+                                          ),
+                                          const SizedBox(height: 20, width: 20),
+                                          const Text("Debilidad",style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w500
+                                          )),
+                                          SizedBox(
+                                            width: 300,
+                                            height: 100,
+                                            child: Wrap(
+                                              alignment: WrapAlignment.start,
+                                              spacing: 15,
+                                              runSpacing: 10,
+                                              children: widget.pokemon.about.weaknesses.map((String weaknesses){
+                                                return PokemonType(tipo: weaknesses);
+                                              }).toList()
+                                            ),
+                                          ),
+                                        ],
+                                        ),
                                       ],
                                     
                                     ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 22),
-                                    child: Row(
-                                       mainAxisAlignment: MainAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          color: Colors.green 
-                                        ,child: const Text("Debilidad")),
-                                      ],
-                                    ),
-                                  )],
+                                  )
+],
                               ),
                             ),
-                            Padding(
+                            const Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Center(
                                   child: Text("Segunda página",
                                       textAlign: TextAlign.center)),
                             ),
-                            Padding(
+                            const Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Center(
                                   child: Text("Tercera página",
@@ -158,29 +168,47 @@ class _PokemonProfileState extends State<PokemonProfile> {
             ),
           ),
           Positioned(
-            top: _height * 0.2,
-            child: Container(
-              padding: const EdgeInsets.all(0),
-              //color: Colors.black,
-              decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Colors.black,
-                      strokeAlign: BorderSide.strokeAlignCenter)),
-              height: 250,
-              width: _width,
-
+            top: _height * 0.1,
+              child: Container(
+                width:_width ,
+                child: Image.network( 
+                  widget.pokemon.img,
+                  scale: 0.4),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 40),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    height: 5,
-                  ),
-                  Image.network(fit: BoxFit.contain, widget.pokemon.img),
+                  Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      children: [
+                        IconButton(
+                          onPressed: () => Util.redirectToPage(context, const Pokedex()),
+                          icon: const Icon(Icons.arrow_back, color: Colors.white,weight: 35,),
+                        ),
+                      ],
+                    ),
+                    Title(
+                      color: Colors.white,
+                      child: Text(
+                        widget.pokemon.name,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Container(width: 30),
+                  ],
+                              ),
                 ],
               ),
             ),
-          ),
         ],
       ),
     );
