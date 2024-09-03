@@ -112,14 +112,28 @@ class Stats extends HiveObject {
   });
 
   factory Stats.fromJson(Map<String, dynamic> json) {
+    int getStatValue(String statName) {
+      try {
+        return json['stats'].firstWhere(
+            (stat) => stat['stat']['name'] == statName)['base_stat'];
+      } catch (e) {
+        return 0;
+      }
+    }
+
     return Stats(
-      hp: json['hp'] ?? 0,
-      attack: json['attack'] ?? 0,
-      defense: json['defense'] ?? 0,
-      spAttack: json['sp_attack'] ?? 0,
-      spDefense: json['sp_defense'] ?? 0,
-      speed: json['speed'] ?? 0,
+      hp: getStatValue('hp'),
+      attack: getStatValue('attack'),
+      defense: getStatValue('defense'),
+      spAttack: getStatValue('special-attack'),
+      spDefense: getStatValue('special-defense'),
+      speed: getStatValue('speed'),
     );
+  }
+
+  @override
+  String toString() {
+    return 'StatDetail(hp: $hp, attack: $attack, defense: $defense, sp_attack: $spAttack, sp_defense: $spDefense, speed: $speed)';
   }
 }
 
@@ -141,5 +155,10 @@ class Evolution extends HiveObject {
       num: json['num'] ?? '',
       name: json['name'] ?? '',
     );
+  }
+
+  @override
+  String toString() {
+    return 'Evolution: |num: $num - name: $name';
   }
 }
