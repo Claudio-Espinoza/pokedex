@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pokedex_demo/common/enum/type_colors.dart';
 import 'package:pokedex_demo/common/helper/util.dart';
-import 'package:pokedex_demo/common/widget/pokemon_type.dart';
+
 import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
-import 'package:pokedex_demo/core/configs/themes/app_themes.dart';
 import 'package:pokedex_demo/presentation/pokedex/page/pokedex.dart';
+import 'package:pokedex_demo/presentation/pokedex/widget/basic_stat_pokemon_profile.dart';
 import 'package:pokedex_demo/presentation/pokedex/widget/information_pokemon_profile.dart';
 
 import '../../../domain/model/pokemon.dart';
@@ -26,6 +26,7 @@ class PokemonProfile extends StatefulWidget {
 class _PokemonProfileState extends State<PokemonProfile> {
   @override
   Widget build(BuildContext context) {
+    print(widget.pokemon.name);
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -69,12 +70,7 @@ class _PokemonProfileState extends State<PokemonProfile> {
                         child: TabBarView(
                           children: [
                             InformationPokemonProfile(pokemon: widget.pokemon),
-                            const Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Center(
-                                  child: Text("Segunda página",
-                                      textAlign: TextAlign.center)),
-                            ),
+                            BasicStatPokemonProfile(pokemon: widget.pokemon),
                             const Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Center(
@@ -92,7 +88,7 @@ class _PokemonProfileState extends State<PokemonProfile> {
           ),
           Positioned(
             top: _height * 0.1,
-              child: Container(
+              child: SizedBox(
                 width:_width ,
                 child: Image.network( 
                   widget.pokemon.img,
@@ -101,36 +97,37 @@ class _PokemonProfileState extends State<PokemonProfile> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 40),
-              child: Column(
-                children: [
+              child: 
                   Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        IconButton(
-                          onPressed: () => Util.redirectToPage(context, const Pokedex()),
-                          icon: const Icon(Icons.arrow_back, color: Colors.white,weight: 35,),
-                        ),
-                      ],
-                    ),
-                    Title(
-                      color: Colors.white,
-                      child: Text(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () => Util.redirectToPage(context, const Pokedex()),
+                        icon: const Icon(Icons.arrow_back, color: Colors.white, size: 38,),
+                      ),
+                      Text(
                         widget.pokemon.name,
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 32,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.bold),
                         ),
-                      ),
-                    ),
-                    Container(width: 30),
-                  ],
-                              ),
-                ],
-              ),
+                      RawMaterialButton(
+                          onPressed: () => Util.redirectToPage(context, const Pokedex()),
+                          fillColor: Colors.white,
+                          padding: const EdgeInsets.all(3.0),
+                          shape: const CircleBorder(),
+                          child: Icon(
+                            Icons.add,
+                            size: 33,
+                            color: TypeColor.pokemonTypeColors[widget.pokemon.type[0]],
+                          ),    
+                        ),
+                      
+                    ],
+                  ),
+                
             ),
         ],
       ),
