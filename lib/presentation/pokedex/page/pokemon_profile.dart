@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pokedex_demo/common/enum/type_colors.dart';
@@ -29,7 +27,7 @@ class _PokemonProfileState extends State<PokemonProfile> {
       body: Stack(
         children: [
           Container(
-            width:_width,
+            width: _width,
             color: TypeColor.pokemonTypeColors[widget.pokemon.type[0]],
             height: _height * 1.65,
           ),
@@ -46,14 +44,15 @@ class _PokemonProfileState extends State<PokemonProfile> {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                 child: DefaultTabController(
                   length: 3,
                   child: Column(
                     children: [
                       const TabBar(
-                        labelPadding:  EdgeInsets.symmetric(horizontal: 10),
-                        labelStyle:  TextStyle(fontSize: 12),
+                        labelPadding: EdgeInsets.symmetric(horizontal: 10),
+                        labelStyle: TextStyle(fontSize: 12),
                         unselectedLabelStyle: TextStyle(fontSize: 12),
                         tabs: <Widget>[
                           Tab(text: "Información"),
@@ -73,65 +72,94 @@ class _PokemonProfileState extends State<PokemonProfile> {
                                       Padding(
                                         padding: EdgeInsets.all(22.0),
                                         child: Column(
-                                          
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
-                                            Text("Categoria",textAlign: TextAlign.left, style: AppThemes.profileLabelTextStyle),
-                                            Text("Altura",textAlign: TextAlign.left, style: AppThemes.profileLabelTextStyle),
-                                            Text("Peso",textAlign: TextAlign.left, style: AppThemes.profileLabelTextStyle),
-                                            Text("Habilidad",textAlign: TextAlign.left, style: AppThemes.profileLabelTextStyle),
+                                            Text("Categoria",
+                                                textAlign: TextAlign.left,
+                                                style: AppThemes
+                                                    .profileLabelTextStyle),
+                                            Text("Altura",
+                                                textAlign: TextAlign.left,
+                                                style: AppThemes
+                                                    .profileLabelTextStyle),
+                                            Text("Peso",
+                                                textAlign: TextAlign.left,
+                                                style: AppThemes
+                                                    .profileLabelTextStyle),
+                                            Text("Habilidad",
+                                                textAlign: TextAlign.left,
+                                                style: AppThemes
+                                                    .profileLabelTextStyle),
                                           ],
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.symmetric(horizontal: 40,vertical: 22),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 40, vertical: 22),
                                         child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
                                           children: [
-                                            Text(widget.pokemon.type[0], style: AppThemes.profileFliedTextStyle,),
-                                            Text(widget.pokemon.about.height, style: AppThemes.profileFliedTextStyle),
-                                            Text(widget.pokemon.about.weight, style: AppThemes.profileFliedTextStyle),
-                                            Text("obtenerhabilidad", style: AppThemes.profileFliedTextStyle)
+                                            Text(
+                                              widget.pokemon.type[0],
+                                              style: AppThemes
+                                                  .profileFliedTextStyle,
+                                            ),
+                                            Text(widget.pokemon.about.height,
+                                                style: AppThemes
+                                                    .profileFliedTextStyle),
+                                            Text(widget.pokemon.about.weight,
+                                                style: AppThemes
+                                                    .profileFliedTextStyle),
+                                            Text("obtenerhabilidad",
+                                                style: AppThemes
+                                                    .profileFliedTextStyle)
                                           ],
                                         ),
                                       )
                                     ],
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(left: 22,bottom: 40),
+                                    padding: const EdgeInsets.only(
+                                        left: 22, bottom: 40),
                                     child: Row(
-                                      
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         Container(
-                                          color: Colors.green 
-                                        ,child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            const Text("Tipo",),
-                                            Row(
+                                            color: Colors.green,
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
                                               children: [
-                                                
+                                                const Text(
+                                                  "Tipo",
+                                                ),
+                                                Row(
+                                                  children: [],
+                                                )
                                               ],
-                                            )
-                                          ],
-                                        )),
+                                            )),
                                       ],
-                                    
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 22),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 22),
                                     child: Row(
-                                       mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         Container(
-                                          color: Colors.green 
-                                        ,child: const Text("Debilidad")),
+                                            color: Colors.green,
+                                            child: const Text("Debilidad")),
                                       ],
                                     ),
-                                  )],
+                                  )
+                                ],
                               ),
                             ),
                             Padding(

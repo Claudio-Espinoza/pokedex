@@ -20,8 +20,7 @@ class PokemonService {
 
         for (var pokemonJson in pokemonList) {
           var pokemon = Pokemon.fromJson(pokemonJson);
-          pokemon.stats = await getStatByPokemonName(pokemon.name);
-          print(pokemon.stats.toString());
+          //pokemon.stats = await getStatByPokemonName(pokemon.name); Ejemplo de uso dani kun uwu
           await box.put(pokemon.num, pokemon);
         }
 
