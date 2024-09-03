@@ -20,6 +20,8 @@ class PokemonService {
 
         for (var pokemonJson in pokemonList) {
           var pokemon = Pokemon.fromJson(pokemonJson);
+          pokemon.stats = await getStatByPokemonName(pokemon.name);
+          print(pokemon.stats.toString());
           await box.put(pokemon.num, pokemon);
         }
 
@@ -33,6 +35,47 @@ class PokemonService {
       if (kDebugMode) {
         print('Error fetching Pokemon data: $e');
       }
+    }
+  }
+
+  Future<Stats> getStatByPokemonName(String name) async {
+    name = name.toLowerCase();
+    String url = 'https://pokeapi.co/api/v2/pokemon/$name/';
+    try {
+      final response = await http.get(Uri.parse(url));
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        if (data['stats'] != null) {
+          return Stats.fromJson(data);
+        } else {
+          if (kDebugMode) {
+            print('No stats found for Pokemon: $name');
+          }
+          return Stats(
+            //Este esta aqui por que el future me exigia un caso de excepcion y no aceptaba los throw
+            hp: 0,
+            attack: 0,
+            defense: 0,
+            spAttack: 0,
+            spDefense: 0,
+            speed: 0,
+          );
+        }
+      } else {
+        throw Exception('Failed to load Pokemon stats');
+      }
+    } catch (error) {
+      if (kDebugMode) {
+        print('Error fetching Pokemon data: $error');
+      }
+      return Stats(
+        hp: 0,
+        attack: 0,
+        defense: 0,
+        spAttack: 0,
+        spDefense: 0,
+        speed: 0,
+      );
     }
   }
 
