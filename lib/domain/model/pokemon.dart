@@ -49,6 +49,11 @@ class Pokemon extends HiveObject {
           [],
     );
   }
+
+  @override
+  String toString() {
+    return 'Pokemon $num: $name | $stats\nEvolutions: $evolutions\n';
+  }
 }
 
 @HiveType(typeId: 1)
@@ -159,6 +164,6 @@ class Evolution extends HiveObject {
 
   @override
   String toString() {
-    return 'Evolution: |num: $num - name: $name';
+    return 'Pokemon $num: name: $name';
   }
 }
