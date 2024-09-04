@@ -17,15 +17,16 @@ class PokemonService {
         final List<dynamic> pokemonList = data['pokemon'];
 
         var box = await Hive.openBox<Pokemon>('pokemonBox');
+        if (box.isEmpty) {
+          for (var pokemonJson in pokemonList) {
+            var pokemon = Pokemon.fromJson(pokemonJson);
+            pokemon.stats = await getStatByPokemonName(pokemon.name);
+            await box.put(pokemon.num, pokemon);
+          }
 
-        for (var pokemonJson in pokemonList) {
-          var pokemon = Pokemon.fromJson(pokemonJson);
-          //pokemon.stats = await getStatByPokemonName(pokemon.name); Ejemplo de uso dani kun uwu
-          await box.put(pokemon.num, pokemon);
-        }
-
-        if (kDebugMode) {
-          print('Pokemon data stored successfully');
+          if (kDebugMode) {
+            print('Pokemon data stored successfully');
+          }
         }
       } else {
         throw Exception('Failed to load Pokemon data');
