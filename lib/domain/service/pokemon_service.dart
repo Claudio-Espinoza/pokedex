@@ -21,7 +21,6 @@ class PokemonService {
           for (var pokemonJson in pokemonList) {
             var pokemon = Pokemon.fromJson(pokemonJson);
             pokemon.stats = await getStatByPokemonId(pokemon.id);
-            print(pokemon);
             await box.put(pokemon.num, pokemon);
           }
 
