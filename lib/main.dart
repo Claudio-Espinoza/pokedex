@@ -17,9 +17,6 @@ void main() async {
   Hive.registerAdapter(TeamAdapter());
   Hive.registerAdapter(PokemonTeamAdapter());
 
-  PokemonService pokemonService = PokemonService();
-  await pokemonService.fetchAndStorePokemon();
-
   TeamService teamService = TeamService();
   await teamService.fetchAndStoreTeam();
 
@@ -31,6 +28,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PokemonService pokemonService = PokemonService();
+    pokemonService.fetchAndStorePokemon();
     return MaterialApp(
       title: 'pokedex',
       debugShowCheckedModeBanner: false,
