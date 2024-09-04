@@ -5,27 +5,31 @@ part 'pokemon.g.dart';
 @HiveType(typeId: 0)
 class Pokemon extends HiveObject {
   @HiveField(0)
-  late String num;
+  late int id;
 
   @HiveField(1)
-  late String name;
+  late String num;
 
   @HiveField(2)
-  late String img;
+  late String name;
 
   @HiveField(3)
-  late List<String> type;
+  late String img;
 
   @HiveField(4)
-  late About about;
+  late List<String> type;
 
   @HiveField(5)
-  late Stats stats;
+  late About about;
 
   @HiveField(6)
+  late Stats stats;
+
+  @HiveField(7)
   late List<Evolution> evolutions;
 
   Pokemon({
+    required this.id,
     required this.num,
     required this.name,
     required this.img,
@@ -37,6 +41,7 @@ class Pokemon extends HiveObject {
 
   factory Pokemon.fromJson(Map<String, dynamic> json) {
     return Pokemon(
+      id: json['id'] ?? 0,
       num: json['num'] ?? '',
       name: json['name'] ?? '',
       img: json['img'] ?? '',
@@ -52,7 +57,7 @@ class Pokemon extends HiveObject {
 
   @override
   String toString() {
-    return 'Pokemon $num: $name | $stats\nEvolutions: $evolutions\n';
+    return 'Pokemon $id: $name | $stats\nEvolutions: $evolutions\n';
   }
 }
 

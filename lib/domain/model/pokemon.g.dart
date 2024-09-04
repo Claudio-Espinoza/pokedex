@@ -17,33 +17,36 @@ class PokemonAdapter extends TypeAdapter<Pokemon> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Pokemon(
-      num: fields[0] as String,
-      name: fields[1] as String,
-      img: fields[2] as String,
-      type: (fields[3] as List).cast<String>(),
-      about: fields[4] as About,
-      stats: fields[5] as Stats,
-      evolutions: (fields[6] as List).cast<Evolution>(),
+      id: fields[0] as int,
+      num: fields[1] as String,
+      name: fields[2] as String,
+      img: fields[3] as String,
+      type: (fields[4] as List).cast<String>(),
+      about: fields[5] as About,
+      stats: fields[6] as Stats,
+      evolutions: (fields[7] as List).cast<Evolution>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, Pokemon obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
-      ..write(obj.num)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.name)
+      ..write(obj.num)
       ..writeByte(2)
-      ..write(obj.img)
+      ..write(obj.name)
       ..writeByte(3)
-      ..write(obj.type)
+      ..write(obj.img)
       ..writeByte(4)
-      ..write(obj.about)
+      ..write(obj.type)
       ..writeByte(5)
-      ..write(obj.stats)
+      ..write(obj.about)
       ..writeByte(6)
+      ..write(obj.stats)
+      ..writeByte(7)
       ..write(obj.evolutions);
   }
 

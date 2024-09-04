@@ -20,7 +20,8 @@ class PokemonService {
         if (box.isEmpty) {
           for (var pokemonJson in pokemonList) {
             var pokemon = Pokemon.fromJson(pokemonJson);
-            pokemon.stats = await getStatByPokemonName(pokemon.name);
+            pokemon.stats = await getStatByPokemonId(pokemon.id);
+            print(pokemon);
             await box.put(pokemon.num, pokemon);
           }
 
@@ -38,9 +39,8 @@ class PokemonService {
     }
   }
 
-  Future<Stats> getStatByPokemonName(String name) async {
-    name = name.toLowerCase();
-    String url = 'https://pokeapi.co/api/v2/pokemon/$name/';
+  Future<Stats> getStatByPokemonId(int id) async {
+    String url = 'https://pokeapi.co/api/v2/pokemon/$id/';
     try {
       final response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
@@ -49,7 +49,7 @@ class PokemonService {
           return Stats.fromJson(data);
         } else {
           if (kDebugMode) {
-            print('No stats found for Pokemon: $name');
+            print('No stats found for Pokemon: $id');
           }
           return Stats(
             //Este esta aqui por que el future me exigia un caso de excepcion y no aceptaba los throw
@@ -62,7 +62,7 @@ class PokemonService {
           );
         }
       } else {
-        throw Exception('Failed to load Pokemon stats');
+        throw Exception('Failed to load Pokemon stats $id');
       }
     } catch (error) {
       if (kDebugMode) {
