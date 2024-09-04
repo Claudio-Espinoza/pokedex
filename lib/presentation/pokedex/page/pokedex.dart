@@ -178,7 +178,8 @@ class _PokedexState extends State<Pokedex> {
                   }
                 },
               ),
-            ),
+             ),
+             SizedBox(height: 30,width: 30,)
           ],
         ),
       ),
