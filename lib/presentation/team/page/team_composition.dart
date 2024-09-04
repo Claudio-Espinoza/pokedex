@@ -37,9 +37,9 @@ class CompositionTeam extends HookWidget {
                     const Spacer(flex: 2),
                     Title(
                       color: AppColors.font,
-                      child: const Text(
-                        "Team",
-                        style: TextStyle(
+                      child: Text(
+                        teamName,
+                        style: const TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
                         ),
