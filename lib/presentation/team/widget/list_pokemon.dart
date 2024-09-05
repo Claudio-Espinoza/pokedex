@@ -24,6 +24,7 @@ class PokemonList extends HookWidget {
         } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
           // Eliminar duplicados usando un Set
           final uniqueTeams = snapshot.data!.toSet().toList();
+          print(uniqueTeams);
 
           return ListView.builder(
             itemCount: uniqueTeams.length,
