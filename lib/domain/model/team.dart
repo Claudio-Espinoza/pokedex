@@ -26,6 +26,11 @@ class Team extends HiveObject {
     this.maxPokemon = 5,
     List<PokemonTeam>? pokemonTeam,
   }) : pokemonTeam = (pokemonTeam ?? []);
+
+  @override
+  String toString() {
+    return 'Team ($nameTeam): $descriptionTeam\nMiembros: $contPokemon/$maxPokemon\n$pokemonTeam';
+  }
 }
 
 @HiveType(typeId: 5)
@@ -55,4 +60,9 @@ class PokemonTeam extends HiveObject {
       required this.attackTeam,
       required this.defenseTeam,
       required this.hpTeam});
+
+  @override
+  String toString() {
+    return 'Pokemon $numTeam:$namePokemon';
+  }
 }
