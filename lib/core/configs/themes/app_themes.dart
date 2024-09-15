@@ -3,19 +3,17 @@ import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
 import 'package:pokedex_demo/core/configs/themes/app_layer.dart';
 
 class AppThemes {
-  static final profileLabelTextStyle = const TextStyle(
+  static const profileLabelTextStyle = TextStyle(
     fontFamily: 'LeagueSpartan',
     fontSize: 18,
     fontWeight: FontWeight.w300,
   );
 
-  static final profileFliedTextStyle = TextStyle(
+  static const profileFliedTextStyle = TextStyle(
     fontFamily: 'LeagueSpartan',
     fontSize: 18,
     fontWeight: FontWeight.w500,
   );
-
-
 
   static final lightTheme = ThemeData(
       scaffoldBackgroundColor: AppColors.background,

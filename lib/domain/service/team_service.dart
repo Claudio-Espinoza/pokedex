@@ -120,53 +120,31 @@ class TeamService {
                   attackTeam: '62',
                   defenseTeam: '63',
                   hpTeam: '60'),
+              PokemonTeam(
+                  numTeam: '3',
+                  namePokemon: 'Ivysaur',
+                  imgTeam:
+                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png',
+                  attackTeam: '62',
+                  defenseTeam: '63',
+                  hpTeam: '60'),
+              PokemonTeam(
+                  numTeam: '4',
+                  namePokemon: 'Ivysaur',
+                  imgTeam:
+                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png',
+                  attackTeam: '62',
+                  defenseTeam: '63',
+                  hpTeam: '60'),
+              PokemonTeam(
+                  numTeam: '5',
+                  namePokemon: 'Ivysaur',
+                  imgTeam:
+                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png',
+                  attackTeam: '62',
+                  defenseTeam: '63',
+                  hpTeam: '60'),
             ]),
-        Team(
-            nameTeam: 'Equipo fuego',
-            contPokemon: 2,
-            maxPokemon: 5,
-            descriptionTeam: 'fuego',
-            pokemonTeam: [
-              PokemonTeam(
-                  numTeam: '1',
-                  namePokemon: 'Charmander',
-                  imgTeam:
-                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png',
-                  attackTeam: '52',
-                  defenseTeam: '43',
-                  hpTeam: '39'),
-              PokemonTeam(
-                  numTeam: '2',
-                  namePokemon: 'Charmeleon',
-                  imgTeam:
-                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png',
-                  attackTeam: '64',
-                  defenseTeam: '58',
-                  hpTeam: '58'),
-            ]),
-        Team(
-            nameTeam: 'Equipo agua',
-            contPokemon: 2,
-            maxPokemon: 5,
-            descriptionTeam: 'agua',
-            pokemonTeam: [
-              PokemonTeam(
-                  numTeam: '7',
-                  namePokemon: 'Squirtle',
-                  imgTeam:
-                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png',
-                  attackTeam: '48',
-                  defenseTeam: '65',
-                  hpTeam: '44'),
-              PokemonTeam(
-                  numTeam: '8',
-                  namePokemon: 'Wartortle',
-                  imgTeam:
-                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/8.png',
-                  attackTeam: '63',
-                  defenseTeam: '80',
-                  hpTeam: '59'),
-            ])
       ];
       Box<Team> teamBox = await Hive.openBox<Team>('teamBox');
 

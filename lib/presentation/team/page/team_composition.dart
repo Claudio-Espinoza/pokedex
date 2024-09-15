@@ -50,7 +50,21 @@ class CompositionTeam extends HookWidget {
                 ),
               ),
             ),
-            Flexible(flex: 8, child: PokemonList(name: teamName))
+            Flexible(
+              flex: 8,
+              child: Column(
+                children: [
+                  Text(
+                    "description sexo",
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  PokemonList(name: teamName)
+                ],
+              ),
+            ),
           ],
         ),
       ),
