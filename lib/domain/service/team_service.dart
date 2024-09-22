@@ -40,6 +40,25 @@ class TeamService {
     }
   }
 
+  Future<String?> getDescriptionByName(String teamName) async {
+    try {
+      Box<Team> teamBox = await Hive.openBox<Team>('teamBox');
+
+      for (int i = 0; i < teamBox.length; i++) {
+        Team? team = teamBox.getAt(i);
+        if (team != null && team.nameTeam == teamName) {
+          return team.descriptionTeam;
+        }
+      }
+      return null;
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error getting team index by name: $e');
+      }
+      return null;
+    }
+  }
+
   Future<List<PokemonTeam>> getPokemonList(name) async {
     try {
       Team? team = await getTeamIndexByName(name);
@@ -102,7 +121,8 @@ class TeamService {
             nameTeam: 'Equipo piedra',
             contPokemon: 5,
             maxPokemon: 5,
-            descriptionTeam: 'piedra',
+            descriptionTeam:
+                'Este es el equipo piedra piedre dentro de la piedra',
             pokemonTeam: [
               PokemonTeam(
                   numTeam: '1',
