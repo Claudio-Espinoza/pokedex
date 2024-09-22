@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:pokedex_demo/common/widget/custom_buton.dart';
-import 'package:pokedex_demo/core/configs/themes/app_colors.dart';
 import 'package:pokedex_demo/core/configs/themes/app_layer.dart';
 import 'package:pokedex_demo/domain/model/team.dart';
 import 'package:pokedex_demo/domain/service/team_service.dart';
@@ -26,13 +24,12 @@ class PokemonList extends HookWidget {
           } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
             // Eliminar duplicados usando un Set
             final uniqueTeams = snapshot.data!.toSet().toList();
-            print(uniqueTeams.toString());
 
             return ListView.builder(
               itemCount: uniqueTeams.length,
               itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(
+                return const Padding(
+                  padding: EdgeInsets.symmetric(
                       horizontal: AppLayer.marginHorizontal,
                       vertical: AppLayer.marginHorizontal - 20),
                   child: PokemonDetail(),
