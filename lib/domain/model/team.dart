@@ -63,6 +63,6 @@ class PokemonTeam extends HiveObject {
 
   @override
   String toString() {
-    return 'Pokemon $numTeam:$namePokemon';
+    return 'Pokemon $numTeam:$namePokemon\n$imgTeam\n$attackTeam\n$defenseTeam\n$hpTeam';
   }
 }
