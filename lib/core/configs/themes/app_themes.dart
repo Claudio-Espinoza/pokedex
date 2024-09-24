@@ -74,6 +74,20 @@ class AppThemes {
     );
   }
 
+  static LinearProgressIndicator progressBar(
+      {Color progressColor = AppColors.alerRed,
+      double borderRadius = 10.0,
+      double valueOrigin = 0,
+      double maxValue = 250}) {
+    double progress = valueOrigin / maxValue;
+    return LinearProgressIndicator(
+      value: progress,
+      backgroundColor: AppColors.disableFont,
+      valueColor: AlwaysStoppedAnimation<Color>(
+          progress > 0.5 ? AppColors.alertGreen : AppColors.alerRed),
+    );
+  }
+
   static ButtonStyle customButtonStyle({
     Color backgroundColor = AppColors.alerRed,
     double borderRadius = 10.0,
