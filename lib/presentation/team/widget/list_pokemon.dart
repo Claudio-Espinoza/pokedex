@@ -28,11 +28,11 @@ class PokemonList extends HookWidget {
             return ListView.builder(
               itemCount: uniqueTeams.length,
               itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(
+                return Padding(
+                  padding: const EdgeInsets.symmetric(
                       horizontal: AppLayer.marginHorizontal,
                       vertical: AppLayer.marginHorizontal - 20),
-                  child: PokemonDetail(),
+                  child: PokemonDetail(pokemon: uniqueTeams[index]),
                 );
               },
             );
