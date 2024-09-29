@@ -11,7 +11,7 @@ class PokemonDetail extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Indice: ${pokemon}");
+    print("Indice: $pokemon");
     return SizedBox(
       width: double.infinity,
       height: 100,
@@ -32,7 +32,18 @@ class PokemonDetail extends HookWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  AppThemes.progressBar(valueOrigin: 20),
+                  Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: Text(pokemon.hpTeam),
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: AppThemes.progressBar(valueOrigin: 20),
+                      )
+                    ],
+                  ),
                   AppThemes.progressBar(valueOrigin: 40),
                   AppThemes.progressBar(valueOrigin: 80),
                 ],

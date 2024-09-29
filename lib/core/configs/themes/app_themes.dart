@@ -78,7 +78,7 @@ class AppThemes {
       {Color progressColor = AppColors.alerRed,
       double borderRadius = 10.0,
       double valueOrigin = 0,
-      double maxValue = 250}) {
+      double maxValue = 100}) {
     double progress = valueOrigin / maxValue;
     return LinearProgressIndicator(
       value: progress,
