@@ -37,7 +37,7 @@ class PokemonList extends HookWidget {
               },
             );
           } else {
-            return const Center(child: Text('No data available'));
+            return const Center(child: Text('No equipos creado'));
           }
         },
       ),

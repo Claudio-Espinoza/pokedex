@@ -90,7 +90,7 @@ class InputTeam extends HookWidget {
                   child: Text(
                     'Cancelar',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 14,
                       fontWeight: FontWeight.w500,
                       color: AppColors.fontContrast,
                       fontFamily: 'LeagueSpartan',
@@ -132,7 +132,7 @@ class InputTeam extends HookWidget {
                   child: Text(
                     'Buscar pokemon',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 14,
                       fontWeight: FontWeight.w500,
                       color: AppColors.fontContrast,
                       fontFamily: 'LeagueSpartan',

@@ -55,7 +55,7 @@ class TeamPage extends StatelessWidget {
             const Flexible(
               flex: 8,
               child: Padding(
-                  padding: EdgeInsets.only(top: AppLayer.paddingTop),
+                  padding: EdgeInsets.only(top: AppLayer.paddingTop - 10),
                   child: ListTeam()),
             )
           ],
