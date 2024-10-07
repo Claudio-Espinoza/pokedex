@@ -17,9 +17,6 @@ void main() async {
   Hive.registerAdapter(TeamAdapter());
   Hive.registerAdapter(PokemonTeamAdapter());
 
-  TeamService teamService = TeamService();
-  await teamService.fetchAndStoreTeam();
-
   runApp(const MyApp());
 }
 
