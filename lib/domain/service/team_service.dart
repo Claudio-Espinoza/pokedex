@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
-import 'package:pokedex_demo/common/enum/type_colors.dart';
 import 'package:pokedex_demo/domain/model/team.dart';
 
 class TeamService {
