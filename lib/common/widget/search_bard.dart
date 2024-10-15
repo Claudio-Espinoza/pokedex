@@ -25,6 +25,7 @@ class SearchInput extends StatelessWidget {
       style: const TextStyle(color: AppColors.font, fontSize: 18.0),
       decoration: AppThemes.inputTheme,
       onTap: () {
+        // Lleva a la pagina de busqueda en cuanto se hace click en el input
         /*
 
         Navigator.push(
