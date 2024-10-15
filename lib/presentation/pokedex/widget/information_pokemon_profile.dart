@@ -23,7 +23,7 @@ class InformationPokemonProfile extends StatelessWidget {
           Wrap(
             spacing: 80,
             children: [
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Categoria",textAlign: TextAlign.left, style: AppThemes.profileLabelTextStyle),
