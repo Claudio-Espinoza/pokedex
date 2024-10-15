@@ -90,7 +90,7 @@ class InputTeam extends HookWidget {
                   child: Text(
                     'Cancelar',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 14,
                       fontWeight: FontWeight.w500,
                       color: AppColors.fontContrast,
                       fontFamily: 'LeagueSpartan',
@@ -102,12 +102,25 @@ class InputTeam extends HookWidget {
             ElevatedButton(
               onPressed: () {
                 if (formKey.currentState?.validate() ?? true) {
-                  Team team = Team(
-                    nameTeam: teamNameController.text,
-                    descriptionTeam: teamDescriptionController.text,
-                  );
-                  service.saveTeam(team);
-                  Util.redirectToPage(context, const Pokedex());
+                  final name = teamNameController.text;
+                  final description = teamDescriptionController.text;
+
+                  // Verificamos si ambos campos tienen un valor
+                  if (name.isNotEmpty && description.isNotEmpty) {
+                    Team team = Team(
+                      nameTeam: name,
+                      descriptionTeam: description,
+                    );
+                    service.saveTeam(team);
+                    Util.redirectToPage(context, const Pokedex());
+                  } else {
+                    // Mostrar un mensaje de error al usuario, por ejemplo:
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                          content:
+                              Text('Por favor, completa todos los campos')),
+                    );
+                  }
                 }
               },
               style: AppThemes.customButtonStyle(
@@ -119,7 +132,7 @@ class InputTeam extends HookWidget {
                   child: Text(
                     'Buscar pokemon',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 14,
                       fontWeight: FontWeight.w500,
                       color: AppColors.fontContrast,
                       fontFamily: 'LeagueSpartan',

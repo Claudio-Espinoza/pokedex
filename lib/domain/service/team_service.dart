@@ -77,6 +77,12 @@ class TeamService {
 
   Future<void> saveTeam(Team team) async {
     try {
+      print(team.nameTeam);
+      print(team.contPokemon);
+      print(team.maxPokemon);
+      print(team.pokemonTeam);
+      print(team.descriptionTeam);
+
       Box<Team> teamBox = await Hive.openBox<Team>('teamBox');
       await teamBox.add(team);
     } catch (e) {
@@ -113,83 +119,12 @@ class TeamService {
     }
   }
 
-  Future<void> fetchAndStoreTeam() async {
-    //Es de prueba eliminar en produccion
-    try {
-      List<Team> exampleTeams = [
-        Team(
-            nameTeam: 'Equipo piedra',
-            contPokemon: 5,
-            maxPokemon: 5,
-            descriptionTeam:
-                'Este es el equipo piedra piedre dentro de la piedra',
-            pokemonTeam: [
-              PokemonTeam(
-                  numTeam: '1',
-                  namePokemon: 'Bulbasaur',
-                  imgTeam:
-                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png',
-                  attackTeam: '49',
-                  defenseTeam: '49',
-                  hpTeam: '45'),
-              PokemonTeam(
-                  numTeam: '2',
-                  namePokemon: 'Ivysaur',
-                  imgTeam:
-                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png',
-                  attackTeam: '62',
-                  defenseTeam: '63',
-                  hpTeam: '60'),
-              PokemonTeam(
-                  numTeam: '3',
-                  namePokemon: 'Ivysaur',
-                  imgTeam:
-                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png',
-                  attackTeam: '62',
-                  defenseTeam: '63',
-                  hpTeam: '60'),
-              PokemonTeam(
-                  numTeam: '4',
-                  namePokemon: 'Ivysaur',
-                  imgTeam:
-                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png',
-                  attackTeam: '62',
-                  defenseTeam: '63',
-                  hpTeam: '60'),
-              PokemonTeam(
-                  numTeam: '5',
-                  namePokemon: 'Ivysaur',
-                  imgTeam:
-                      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png',
-                  attackTeam: '62',
-                  defenseTeam: '63',
-                  hpTeam: '60'),
-            ]),
-      ];
-      Box<Team> teamBox = await Hive.openBox<Team>('teamBox');
-
-      if (teamBox.isEmpty) {
-        for (var team in exampleTeams) {
-          await teamBox.add(team);
-        }
-      }
-
-      if (kDebugMode) {
-        print('Example teams stored successfully');
-      }
-    } catch (e) {
-      if (kDebugMode) {
-        print('Error fetching Pokemon data: $e');
-      }
-    }
-  }
-
   Future<List<Team>> getAllTeam() async {
     try {
       Box<Team> teams = await Hive.openBox<Team>('teamBox');
 
       if (teams.isEmpty) {
-        throw Exception('Failed to fetch Team: box is empty in getAllTeam()');
+        return [];
       } else {
         return teams.values.toList();
       }

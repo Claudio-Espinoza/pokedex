@@ -11,7 +11,7 @@ class PokemonDetail extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Indice: ${pokemon}");
+    print("Indice: $pokemon");
     return SizedBox(
       width: double.infinity,
       height: 100,
@@ -22,6 +22,7 @@ class PokemonDetail extends HookWidget {
             child: Container(
               height: 100,
               color: AppColors.alerRed,
+              child: Image.network(pokemon.imgTeam, scale: 0.4),
             ),
           ),
           Expanded(
@@ -32,9 +33,48 @@ class PokemonDetail extends HookWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  AppThemes.progressBar(valueOrigin: 20),
-                  AppThemes.progressBar(valueOrigin: 40),
-                  AppThemes.progressBar(valueOrigin: 80),
+                  Row(
+                    children: [
+                      const Expanded(child: Text("HP")),
+                      Expanded(
+                        flex: 1,
+                        child: Text(pokemon.hpTeam),
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: AppThemes.progressBar(
+                            valueOrigin: double.parse(pokemon.hpTeam)),
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Expanded(child: Text("Atk")),
+                      Expanded(
+                        flex: 1,
+                        child: Text(pokemon.attackTeam),
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: AppThemes.progressBar(
+                            valueOrigin: double.parse(pokemon.attackTeam)),
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Expanded(child: Text("Def")),
+                      Expanded(
+                        flex: 1,
+                        child: Text(pokemon.defenseTeam),
+                      ),
+                      Expanded(
+                        flex: 3,
+                        child: AppThemes.progressBar(
+                            valueOrigin: double.parse(pokemon.defenseTeam)),
+                      )
+                    ],
+                  ),
                 ],
               ),
             ),
