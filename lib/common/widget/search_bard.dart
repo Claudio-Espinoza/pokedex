@@ -25,6 +25,8 @@ class SearchInput extends StatelessWidget {
       style: const TextStyle(color: AppColors.font, fontSize: 18.0),
       decoration: AppThemes.inputTheme,
       onTap: () {
+        /*
+
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -34,7 +36,7 @@ class SearchInput extends StatelessWidget {
             ),
           ),
         );
-      },
+      */},
       onSubmitted: (text) {
         Navigator.push(
           context,
@@ -73,6 +75,9 @@ class _SearchResultsViewState extends State<SearchResultsView> {
     super.initState();
     _loadPokemon();
     widget.controller.addListener(_filterPokemon);
+
+
+    
   }
 
   Future<void> _loadPokemon() async {
@@ -80,7 +85,7 @@ class _SearchResultsViewState extends State<SearchResultsView> {
       List<Pokemon> pokemonList = await widget.pokemonService.getAllPokemon();
       setState(() {
         allPokemon = pokemonList;
-        filteredPokemon = pokemonList;
+        _filterPokemon();
       });
     } catch (e) {
       if (kDebugMode) {
@@ -109,6 +114,7 @@ class _SearchResultsViewState extends State<SearchResultsView> {
     return Scaffold(
       body: Column(
         children: [
+          // Header de busqueda
           Padding(
             padding: const EdgeInsets.only(left: 8, right: 8, top: 45, bottom: 16),
             child: Row(
@@ -120,15 +126,23 @@ class _SearchResultsViewState extends State<SearchResultsView> {
                   },
                 ),
                 Expanded(
-                  child: SearchInput(controller: widget.controller),
+                  child: TextField(
+                    controller: widget.controller,
+                    
+                    style: const TextStyle(color: AppColors.font, fontSize: 18.0),
+                    decoration: AppThemes.inputTheme,
+                    onSubmitted: (text) {
+                      _filterPokemon();
+                    },
+                  ),
                 ),
               ],
             ),
           ),
           
+          // Lista de tarjetas con los pokemon que tienen coincidencia en la búsqueda
           Expanded(
             child: ListView.builder(
-              
               itemCount: filteredPokemon.length,
               itemBuilder: (context, index) {
                 final pokemon = filteredPokemon[index];
